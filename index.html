@@ -15,7 +15,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:18px;ma
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
 .keyboard{padding:17px;position:sticky;top:15px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
 .keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
-.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.si-workflow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.si-slot textarea{min-height:235px;font-size:20px}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
 .langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
 textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
 @media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
@@ -46,7 +46,11 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
         <button class="tab" role="tab" id="tab-en" aria-selected="false" aria-controls="editor-en" data-lang="en"><span class="dot"></span>English</button>
       </div>
       <div class="langbar"><label id="editorLabel" for="editor-si">Sinhala text</label><div class="fontpick"><span>Font</span><select id="font-si" aria-label="Sinhala font"></select></div></div>
-      <textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="Type Sinhala here or use the character buttons…"></textarea>
+      <div class="si-workflow" id="sinhala-workflow" aria-label="Sinhala typing, Unicode, and FM output">
+        <div class="si-slot"><label for="singlish-si">ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small></div>
+        <div class="si-slot"><label for="editor-si">යුනිකෝඩ් සිංහල</label><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය FM වෙත පරිවර්තනය වේ</small></div>
+        <div class="si-slot"><label for="fm-si">FM Bindumathi</label><textarea id="fm-si" lang="si" spellcheck="false" readonly aria-label="FM Bindumathi converted text"></textarea><button class="btn copy-fm" id="copyFm">FM පාඨය පිටපත් කරන්න</button></div>
+      </div>
       <textarea id="editor-ta" class="hidden" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும் அல்லது எழுத்து பொத்தான்களைப் பயன்படுத்தவும்…"></textarea>
       <textarea id="editor-en" class="hidden" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here or use the keyboard buttons…"></textarea>
       <div class="langbar hidden" id="fontbar-ta"><label for="font-ta">Tamil text</label><div class="fontpick"><span>Font</span><select id="font-ta" aria-label="Tamil font"></select></div></div>
@@ -89,12 +93,14 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
   const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
   const labels = ["si","ta","en"];
+  const singlishInput = document.querySelector("#singlish-si");
+  const fmOutput = document.querySelector("#fm-si");
   function notify(message){const el=document.querySelector("#status");el.textContent=message;el.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.classList.remove("show"),2100)}
   for(const lang of labels){
     fonts[lang].forEach(([name,stack],i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;fontSelects[lang].append(o)});
     fontSelects[lang].addEventListener("change",()=>{editors[lang].style.fontFamily=fonts[lang][fontSelects[lang].value][1];renderPreview()});
     editors[lang].style.fontFamily=fonts[lang][0][1];
-    editors[lang].addEventListener("input",()=>{values[lang]=editors[lang].value;renderPreview();if(active===lang)updateCount()});
+    editors[lang].addEventListener("input",()=>{values[lang]=editors[lang].value;if(lang==="si")syncFmOutput();renderPreview();if(active===lang)updateCount()});
   }
   const keys = {
     si:[
@@ -123,12 +129,13 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   }
   function insertAtCursor(text){
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
-    el.setRangeText(text,start,end,"end");values[active]=el.value;el.focus();renderPreview();updateCount();
+    el.setRangeText(text,start,end,"end");values[active]=el.value;if(active==="si")syncFmOutput();el.focus();renderPreview();updateCount();
   }
   document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
     values[active]=editors[active].value;active=tab.dataset.lang;
     document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
     labels.forEach(lang=>editors[lang].classList.toggle("hidden",lang!==active));
+    document.querySelector("#sinhala-workflow").classList.toggle("hidden",active!=="si");
     document.querySelector("#editorLabel").textContent=language[active].label;
     document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
     document.querySelector("#fontbar-ta").classList.toggle("hidden",active!=="ta");
@@ -142,8 +149,30 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     if(start===end&&start>0)el.setSelectionRange(start-1,end);
     el.setRangeText("",el.selectionStart,el.selectionEnd,"end");values[active]=el.value;el.focus();renderPreview();updateCount();
   }));
-  document.querySelector("#clearCurrent").addEventListener("click",()=>{editors[active].value="";values[active]="";renderPreview();updateCount();editors[active].focus()});
+  document.querySelector("#clearCurrent").addEventListener("click",()=>{editors[active].value="";values[active]="";if(active==="si"){singlishInput.value="";syncFmOutput()}renderPreview();updateCount();editors[active].focus()});
+  singlishInput.addEventListener("input",()=>{editors.si.value=transliterateSinhlish(singlishInput.value);values.si=editors.si.value;syncFmOutput();renderPreview();if(active==="si")updateCount()});
+  document.querySelector("#copyFm").addEventListener("click",()=>copy(fmOutput.value));
+  function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(editors.si.value);}
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
+  function transliterateSinhlish(input){
+    if(/[\\u0D80-\\u0DFF]/.test(input)) return input;
+    const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
+    const consonants=[["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["th","ථ"],["dh","ධ"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["t","ත"],["d","ද"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
+    const signs={"aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
+    const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length),cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
+    function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
+    return input.split(/(\\s+|[^\\p{L}]+)/u).map(w=>{if(!w||/^\\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;let out="",i=0;while(i<w.length){const c=find(cm,w,i);if(c){i+=c[0].length;const v=find(vm,w,i);if(v){out+=c[1]+(signs[v[0]]||"");i+=v[0].length}else out+=c[1]+"්";continue}const v=find(vm,w,i);if(v){out+=v[1];i+=v[0].length}else out+=w[i++]}return out}).join("");
+  }
+  function unicodeToFmBindumathi(input){
+    let t=input.normalize("NFC");
+    const base={"ක":"l","ඛ":"L","ග":".","ඝ":">","ඞ":"Û","ඟ":"Õ","ච":"p","ඡ":"P","ජ":"c","ඣ":"CO","ඤ":"[","ඥ":"{","ට":"g","ඨ":"G","ඩ":"v","ඪ":"V","ණ":"K","ඬ":"~","ත":";","ථ":":","ද":"o","ධ":"O","න":"k","ඳ":"|","ප":"m","ඵ":"M","බ":"n","භ":"N","ම":"u","ඹ":"U","ය":"h","ර":"r","ල":",","ව":"j","ශ":"Y","ෂ":"I","ස":"i","හ":"y","ළ":"<","ෆ":"*"};
+    const special=[["ක්‍ෂ","Ì"],["්‍ය","H"],["්‍ර","%"],["ද්‍ර","ø"],["ආ","wd"],["ඇ","we"],["ඈ","wE"],["ඉ","b"],["ඊ","B"],["උ","W"],["ඌ","W!"],["එ","t"],["ඒ","ta"],["ඔ","T"],["ඕ","´"],["ඓ","ft"],["ඖ","T!"],["ං","x"],["ඃ","#"]];
+    t=t.replace(/([ක-ෆ])ෝ/g,(_,c)=>"f"+(base[c]||"")+"da").replace(/([ක-ෆ])ො/g,(_,c)=>"f"+(base[c]||"")+"d").replace(/([ක-ෆ])ේ/g,(_,c)=>"f"+(base[c]||"")+"a").replace(/([ක-ෆ])ෙ/g,(_,c)=>"f"+(base[c]||""));
+    for(const [a,b] of special)t=t.split(a).join(b);
+    const chars={"අ":"w","ක":"l","ග":".","ච":"p","ජ":"c","ට":"g","ඩ":"v","ත":";","ද":"o","න":"k","ප":"m","බ":"n","ම":"u","ය":"h","ර":"r","ල":",","ව":"j","ස":"i","හ":"y","ා":"d","ැ":"e","ෑ":"E","ි":"s","ී":"S","ු":"q","ූ":"Q","ෘ":"D","ෲ":"DD","ෟ":"!","්":"a","ං":"x","ඃ":"#"};
+    for(const [a,b] of [...special,...Object.entries(base),...Object.entries(chars)])t=t.split(a).join(b);
+    return t;
+  }
   function renderPreview(){
     const preview=document.querySelector("#preview");preview.replaceChildren();
     labels.forEach(lang=>{if(!values[lang])return;const span=document.createElement("span");span.className="preview-part";span.lang=language[lang].tag;span.style.fontFamily=fonts[lang][fontSelects[lang].value][1];span.textContent=values[lang];preview.append(span)});
