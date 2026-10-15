@@ -404,6 +404,9 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
           ["කි","ki"],["කී","kii"],["කු","ku"],["කූ","kuu"],["කෙ","ke"],
           ["කේ","kee"],["කො","ko"],["කෝ","koo"]
         ]],
+        ["t සහ th අකුරු වෙනස",[
+          ["ට්","t"],["ත්","th"],["ටු","tu"],["තු","thu"],["ත්‍ර","thra"],["වි","vi"]
+        ]],
         ["සඤ්ඤක අකුරු සහ විශේෂ සංයෝග",[
           ["ඟ","ngga"],["ඦ","njja"],["ඬ","ndda"],["ඳ","ndha"],["ඹ","mba"],
           ["ඥ","gna"],["ක්‍ෂ","ksha"],["ඡ","chha"],["ශ","sha"],["ඤ","nya"]
@@ -530,23 +533,54 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function transliterateSinhlish(input){
     if(/[\u0D80-\u0DFF]/.test(input)) return input;
     const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["A","ආ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
-    const consonants=[["ngg","ඟ"],["njj","ඦ"],["ndd","ඬ"],["ndh","ඳ"],["mb","ඹ"],["gn","ඥ"],["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["Th","ඨ"],["Dh","ඪ"],["th","ත"],["dh","ද"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["P","ප"],["B","බ"],["M","ම"],["Y","ය"],["R","ර"],["L","ල"],["V","ව"],["S","ෂ"],["H","හ"],["t","ත"],["d","ද"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
+    const consonants=[["ngg","ඟ"],["njj","ඦ"],["ndd","ඬ"],["ndh","ඳ"],["mb","ඹ"],["gn","ඥ"],["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["Th","ඨ"],["Dh","ඪ"],["th","ත"],["dh","ද"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["P","ප"],["B","බ"],["M","ම"],["Y","ය"],["R","ර"],["L","ල"],["V","ව"],["S","ෂ"],["H","හ"],["t","ට"],["d","ඩ"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
     const signs={"A":"ෑ","aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
     const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length),cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
     function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
-    return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;let out="",i=0;while(i<w.length){const c=find(cm,w,i);if(c){i+=c[0].length;const v=find(vm,w,i);if(v){out+=c[1]+(signs[v[0]]||"");i+=v[0].length}else out+=c[1]+"්";continue}const v=find(vm,w,i);if(v){out+=v[1];i+=v[0].length}else out+=w[i++]}return out}).join("");
+    return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{
+      if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;
+      let out="",i=0;
+      while(i<w.length){
+        const con=find(cm,w,i);
+        if(con){
+          i+=con[0].length;
+          // In this typing scheme, r after a dead consonant creates rakaranshaya:
+          // thra -> ත්‍ර, kra -> ක්‍ර, etc.
+          if(w[i]==="r"){
+            const vowel=find(vm,w,i+1);
+            if(i+1===w.length||vowel){
+              out+=con[1]+"්‍ර";i++;
+              if(vowel){if(vowel[0]!=="a")out+=signs[vowel[0]]||"";i+=vowel[0].length}
+              continue;
+            }
+          }
+          const vowel=find(vm,w,i);
+          if(vowel){out+=con[1]+(signs[vowel[0]]||"");i+=vowel[0].length}
+          else out+=con[1]+"්";
+          continue;
+        }
+        const vowel=find(vm,w,i);
+        if(vowel){out+=vowel[1];i+=vowel[0].length}
+        else out+=w[i++];
+      }
+      return out;
+    }).join("");
   }
-  function unicodeToFmBindumathi(input){
-    let t=input.normalize("NFC");
+    function unicodeToFmBindumathi(input){
+    let t=input.normalize("NFC").replace(/්\\u200D(?=[\\u0D80-\\u0DFF])/g,"්");
     const base={"ක":"l","ඛ":"L","ග":".","ඝ":">","ඞ":"Û","ඟ":"Õ","ච":"p","ඡ":"P","ජ":"c","ඣ":"CO","ඤ":"[","ඥ":"{","ට":"g","ඨ":"G","ඩ":"v","ඪ":"V","ණ":"K","ඬ":"~","ත":";","ථ":":","ද":"o","ධ":"O","න":"k","ඳ":"|","ප":"m","ඵ":"M","බ":"n","භ":"N","ම":"u","ඹ":"U","ය":"h","ර":"r","ල":",","ව":"j","ශ":"Y","ෂ":"I","ස":"i","හ":"y","ළ":"<","ෆ":"*"};
-    const special=[["ක්‍ෂ","Ì"],["්‍ය","H"],["්‍ර","%"],["ද්‍ර","ø"],["ආ","wd"],["ඇ","we"],["ඈ","wE"],["ඉ","b"],["ඊ","B"],["උ","W"],["ඌ","W!"],["එ","t"],["ඒ","ta"],["ඔ","T"],["ඕ","´"],["ඓ","ft"],["ඖ","T!"],["ං","x"],["ඃ","#"]];
+    // These Bindumathi glyphs occupy a single legacy character; do not emit
+    // separate base-consonant and vowel-sign codes for them.
+    const dedicated=[["ත්‍රෝ","f;%da"],["ත්‍රො","f;%d"],["ත්‍රේ","f;a%"],["ත්‍රෙ","f;%"],["ත්‍ර",";%"],["වි","ú"],["වී","ù"],["ව්","õ"],["ජි","ð"],["මි","ñ"],["බි","ì"],["බ්","í"],["බී","î"],["මී","ó"],["ඹි","ô"],["ඹ්","ò"],["ඹී","ö"],["ඳි","¢"],["ඳී","£"],["දූ","¥"],["ලූ","Æ"],["ර්","¾"],["දි","È"],["ච්","É"],["ජ්","Ê"],["රී","Í"],["ඨි","À"],["ඨී","Á"],["ඡී","Â"],["ඛ්","Ä"],["ඛි","Å"],["ඛී","Ç"],["චි","Ñ"],["ථී","Ò"],["චී","Ö"],["ට්","Ü"],["ඵි","Ý"],["රි","ß"],["ටී","à"],["ටි","á"],["ඩ්","â"],["ඩී","ã"],["ඩි","ä"],["ඬ්","å"],["ඬි","ç"],["ධ්","è"],["ඬී","é"],["ධි","ê"],["ධී","ë"],["ථි","Ó"],["ඳු","÷"],["වී","ù"],["වි","ú"],["ඞ්","û"],["ඞී","ü"],["ඡි","ý"],["ඡ්","þ"],["දු","ÿ"],["ණී","Œ"],["ණි","‚"],["ළු","¿"],["ගු",".="],["කු","l="],["තු",";="],["ශු","Y="],["භු","N="],["ගූ",".+"],["කූ","l+"],["තූ",";+"],["ශූ","Y+"],["භූ","N+"]];
+    for(const [from,to] of dedicated)t=t.split(from).join(to);
+    const special=[["ක්‍ෂ","Ì"],["ක්ෂ","Ì"],["්‍ය","H"],["්ය","H"],["්‍ර","%"],["්ර","%"],["ද්‍ර","ø"],["ආ","wd"],["ඇ","we"],["ඈ","wE"],["ඉ","b"],["ඊ","B"],["උ","W"],["ඌ","W!"],["එ","t"],["ඒ","ta"],["ඔ","T"],["ඕ","´"],["ඓ","ft"],["ඖ","T!"],["ං","x"],["ඃ","#"]];
     t=t.replace(/([ක-ෆ])ෝ/g,(_,c)=>"f"+(base[c]||"")+"da").replace(/([ක-ෆ])ො/g,(_,c)=>"f"+(base[c]||"")+"d").replace(/([ක-ෆ])ේ/g,(_,c)=>"f"+(base[c]||"")+"a").replace(/([ක-ෆ])ෙ/g,(_,c)=>"f"+(base[c]||""));
     for(const [a,b] of special)t=t.split(a).join(b);
     const chars={"අ":"w","ක":"l","ග":".","ච":"p","ජ":"c","ට":"g","ඩ":"v","ත":";","ද":"o","න":"k","ප":"m","බ":"n","ම":"u","ය":"h","ර":"r","ල":",","ව":"j","ස":"i","හ":"y","ා":"d","ැ":"e","ෑ":"E","ි":"s","ී":"S","ු":"q","ූ":"Q","ෘ":"D","ෲ":"DD","ෟ":"!","්":"a","ං":"x","ඃ":"#"};
     for(const [a,b] of [...special,...Object.entries(base),...Object.entries(chars)])t=t.split(a).join(b);
     return t;
   }
-  function textRuns(text){
+    function textRuns(text){
     const runs=[];let current=null;
     for(const char of text){
       const cp=char.codePointAt(0),lang=cp>=0x0D80&&cp<=0x0DFF?"si":cp>=0x0B80&&cp<=0x0BFF?"ta":"en";
