@@ -11,11 +11,11 @@
 button,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:0 auto;padding:28px 26px 40px}
 header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#172c59;color:#fff;font-size:18px;font-weight:800;letter-spacing:-2px}.brand h1{font-size:21px;line-height:1.2;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:9px 13px;font-weight:650}.btn:hover{border-color:#9fb1d2;background:#f9fbff}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#244bd0}
-.workspace{display:grid;grid-template-columns:minmax(245px,300px) minmax(0,1fr);gap:18px;align-items:start}.workspace.keyboard-closed{grid-template-columns:minmax(0,1fr)}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 0fr;gap:14px;align-items:start;transition:grid-template-columns .2s ease}.workspace:not(.keyboard-closed){grid-template-columns:minmax(230px,260px) minmax(0,1fr) 0fr}.workspace.guide-open.keyboard-closed{grid-template-columns:minmax(0,1fr) minmax(255px,300px)}.workspace.guide-open:not(.keyboard-closed){grid-template-columns:minmax(220px,245px) minmax(0,1fr) minmax(255px,300px)}
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
-.keyboard{padding:17px;position:sticky;top:15px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
+.keyboard,.guide-panel{padding:14px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}.guide-panel{min-width:0;opacity:0;transform:translateX(22px);transition:opacity .18s ease,transform .18s ease;pointer-events:none}.guide-open .guide-panel{opacity:1;transform:translateX(0);pointer-events:auto}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
 .keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
-.si-workflow{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:26px}.slot-head label{white-space:nowrap}.slot-head .fontpick{font-size:12px;flex:0 0 auto;margin-left:auto}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{min-height:235px;font-size:20px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}.typing-guide{margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fbfcff;font-size:12px;color:var(--muted)}.typing-guide h3{margin:0 0 8px;color:var(--ink);font-size:14px}.typing-guide h4{margin:10px 0 4px;color:var(--ink);font-size:12px}.typing-guide p{margin:0;line-height:1.7}.typing-guide code{font-family:ui-monospace,monospace;background:#edf2ff;border-radius:4px;padding:1px 4px;color:#243f8f}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.si-workflow{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:4px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:26px}.slot-head label{white-space:nowrap}.slot-head .fontpick{font-size:12px;flex:0 0 auto;margin-left:auto}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{height:clamp(105px,15vh,140px);min-height:92px;font-size:18px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.3;min-height:0}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}.guide-panel h2{margin:0;font-size:15px}.guide-panel .guide-intro{margin:2px 0 12px;color:var(--muted);font-size:12px}.guide-section{border-top:1px solid var(--line);padding:10px 0}.guide-section h3{margin:0 0 7px;font-size:13px}.guide-row{display:grid;grid-template-columns:minmax(70px,.65fr) minmax(70px,1fr);gap:8px;padding:5px 7px;border-radius:6px;font-size:12px}.guide-row:nth-child(even){background:#f5f7fb}.guide-row code{font:600 12px ui-monospace,monospace;color:#2449bd}.guide-row strong{font-size:15px;font-weight:600}.guide-panel .panel-title{margin-bottom:3px}.guide-panel .btn{padding:6px 9px}.reference-hidden{display:none!important}@media(max-width:1000px){.workspace,.workspace:not(.keyboard-closed),.workspace.guide-open.keyboard-closed,.workspace.guide-open:not(.keyboard-closed){grid-template-columns:minmax(0,1fr)}.keyboard,.guide-panel{position:static;max-height:none}.si-workflow{grid-template-columns:1fr;gap:9px}.si-slot textarea,.legacy-output{height:clamp(100px,14vh,125px);min-height:90px}.guide-panel{grid-column:1}.guide-open .guide-panel{transform:none}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
 .langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
 textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
 @media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
@@ -28,7 +28,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
 <header>
   <div class="brand"><div class="mark" aria-hidden="true">සි</div><div><h1>TriScript Writer</h1><p>Type and format Sinhala, Tamil, and English in one place.</p></div></div>
   <div class="actions" aria-label="Export actions">
-    <button class="btn" id="toggleKeyboard" aria-expanded="false">Show keyboard layout</button><button class="btn" id="copyAll">Copy all</button><button class="btn" id="saveTxt">Download TXT</button><button class="btn" id="saveDoc">Download Word</button><button class="btn primary" id="savePdf">Print / Save PDF</button>
+    <button class="btn" id="toggleKeyboard" aria-expanded="false">Show keyboard layout</button><button class="btn" id="toggleGuide" aria-expanded="false">Show typing guide</button><button class="btn" id="copyAll">Copy all</button><button class="btn" id="saveTxt">Download TXT</button><button class="btn" id="saveDoc">Download Word</button><button class="btn primary" id="savePdf">Print / Save PDF</button>
   </div>
 </header>
 <div class="workspace keyboard-closed">
@@ -37,7 +37,6 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     <p class="hint" id="keyboardHint">Click a character to insert it at the cursor.</p>
     <div class="keygrid" id="keygrid"></div>
     <div class="keyboard-footer"><button class="key utility" data-insert="|">|</button><button class="key utility" data-insert=" ">Space</button><button class="key utility" data-action="backspace">⌫</button></div>
-    <div class="typing-guide hidden" id="typingGuide"></div>
   </aside>
   <main class="content">
     <section class="panel editor" aria-label="Writing area">
@@ -46,29 +45,29 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
         <button class="tab" role="tab" id="tab-ta" aria-selected="false" aria-controls="editor-ta" data-lang="ta"><span class="dot"></span>தமிழ்</button>
         <button class="tab" role="tab" id="tab-en" aria-selected="false" aria-controls="editor-en" data-lang="en"><span class="dot"></span>English</button>
       </div>
-      <div class="langbar"><label id="editorLabel" for="editor-si">සිංහල පාඨය</label></div>
-      <div class="si-workflow" id="sinhala-workflow" aria-label="Sinhala typing, Unicode, and FM output">
-        <div class="si-slot"><label for="singlish-si">ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small></div>
+            <div class="si-workflow" id="sinhala-workflow" aria-label="Sinhala typing, Unicode, and FM output">
+        <div class="si-slot"><label for="singlish-si">සිංහල පාඨය — ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small></div>
         <div class="si-slot"><div class="slot-head"><label for="editor-si">යුනිකෝඩ් සිංහල</label><div class="fontpick"><span>යුනිකෝඩ් අකුරු</span><select id="font-si" aria-label="Sinhala Unicode font"></select></div></div><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය තෝරාගත් FM අකුරු රටාවට පරිවර්තනය වේ</small></div>
         <div class="si-slot"><div class="slot-head"><label for="fm-si">Legacy output</label><div class="fontpick"><span>FM font</span><select id="legacy-font-si" aria-label="Sinhala FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><div id="fm-si" class="legacy-output" lang="si" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>Sinhala and Tamil become legacy codes; English stays unchanged.</small><button class="btn copy-fm" id="copyFm">Copy legacy output</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="ta" aria-label="தமிழ் தட்டச்சு பகுதி">
-        <div class="si-slot"><label for="editor-ta">தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>ஆங்கில எழுத்துகளில் தட்டச்சு செய்தால் தமிழ் எழுத்துகளாக மாறும்; ஆவணம் தொடர்ந்து இருக்கும்</small></div>
+        <div class="si-slot"><label for="editor-ta">தமிழ் உரை — தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>ஆங்கில எழுத்துகளில் தட்டச்சு செய்தால் தமிழ் எழுத்துகளாக மாறும்; ஆவணம் தொடர்ந்து இருக்கும்</small></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><div class="fontpick"><span>யுனிகோடு எழுத்துரு</span><select id="font-ta" aria-label="Tamil Unicode font"></select></div></div><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
         <div class="si-slot"><div class="slot-head"><label for="legacy-ta">தமிழ் மரபு / legacy output</label><div class="fontpick"><span>தமிழ் எழுத்துரு</span><select id="legacy-font-ta" aria-label="Tamil legacy font"><option>Bamini 12</option><option>Bamini 01</option><option>Bamini 02</option><option>Bamini 03</option><option>Bamini 04</option></select></div></div><div id="legacy-ta" class="legacy-output" lang="ta" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>தமிழ் மற்றும் சிங்களம் மரபு குறியீடுகளாக மாறும்; ஆங்கிலம் மாறாது. Word கோப்பில் எழுத்துருக்கள் தனித்தனியாக அமைக்கப்படும்.</small><button class="btn copy-legacy">மரபு உரையை நகலெடுக்கவும்</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="en" aria-label="English typing area">
-        <div class="si-slot"><label for="editor-en">English typing</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
+        <div class="si-slot"><label for="editor-en">English text — typing area</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-en">Unicode document</label><div class="fontpick"><span>Unicode font</span><select id="font-en" aria-label="English Unicode font"></select></div></div><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
         <div class="si-slot"><div class="slot-head"><label for="render-en">Legacy output preview</label><div class="fontpick"><span>FM font</span><select id="legacy-font-en" aria-label="English tab FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><div id="render-en" class="legacy-output" lang="en" role="textbox" aria-readonly="true" aria-label="Mixed legacy output"></div><small>All scripts use their selected legacy fonts in the Word export.</small><button class="btn copy-legacy">Copy legacy output</button></div>
       </div>
       <div class="editor-tools"><span id="count">0 characters</span><button class="btn" id="copyCurrent">Copy this language</button></div>
     </section>
-    <section class="panel preview" aria-label="Document preview">
-      <div class="preview-head"><h2>Document preview</h2><span class="hint" style="margin:0">Each section keeps its selected font.</span></div>
-      <div class="preview-text" id="preview"></div>
-    </section>
   </main>
+  <aside class="panel guide-panel reference-hidden" id="guidePanel" aria-label="Sinhala and Tamil typing reference" aria-hidden="true">
+    <div class="panel-title"><h2 id="guideTitle">Typing guide</h2><button class="btn" id="closeGuide" type="button">Close</button></div>
+    <p class="guide-intro" id="guideIntro"></p>
+    <div id="guideContent"></div>
+  </aside>
 </div>
 </div>
 <div class="status" id="status" role="status" aria-live="polite"></div>
@@ -112,10 +111,31 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
   const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
   const labels = ["si","ta","en"];
-  document.querySelector("#toggleKeyboard").addEventListener("click",()=>{
-    const panel=document.querySelector(".keyboard"),workspace=document.querySelector(".workspace"),isOpen=panel.classList.contains("hidden");
-    panel.classList.toggle("hidden",!isOpen);workspace.classList.toggle("keyboard-closed",!isOpen);
-    document.querySelector("#toggleKeyboard").setAttribute("aria-expanded",String(isOpen));buildKeyboard();
+  const workspace=document.querySelector(".workspace");
+  const keyboardPanel=document.querySelector(".keyboard");
+  const guidePanel=document.querySelector("#guidePanel");
+  const toggleKeyboard=document.querySelector("#toggleKeyboard");
+  const toggleGuide=document.querySelector("#toggleGuide");
+  function updatePanelLayout(){
+    const keyboardOpen=!keyboardPanel.classList.contains("hidden");
+    const guideOpen=!guidePanel.classList.contains("reference-hidden")&&active!=="en";
+    workspace.classList.toggle("keyboard-closed",!keyboardOpen);
+    workspace.classList.toggle("guide-open",guideOpen);
+    toggleKeyboard.setAttribute("aria-expanded",String(keyboardOpen));
+    toggleGuide.setAttribute("aria-expanded",String(guideOpen));
+    guidePanel.setAttribute("aria-hidden",String(!guideOpen));
+  }
+  toggleKeyboard.addEventListener("click",()=>{
+    keyboardPanel.classList.toggle("hidden");
+    updatePanelLayout();buildKeyboard();
+  });
+  toggleGuide.addEventListener("click",()=>{
+    if(active==="en")return;
+    guidePanel.classList.toggle("reference-hidden");
+    updatePanelLayout();buildKeyboard();
+  });
+  document.querySelector("#closeGuide").addEventListener("click",()=>{
+    guidePanel.classList.add("reference-hidden");updatePanelLayout();buildKeyboard();
   });
   const singlishInput = document.querySelector("#singlish-si");
   const fmOutput = document.querySelector("#fm-si");
@@ -126,7 +146,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     if(savedFont!==null&&fonts[lang][Number(savedFont)])fontSelects[lang].value=savedFont;
     const fontTarget=lang==="si"?editors.si:document.querySelector("#unicode-"+lang);
     fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
-    fontSelects[lang].addEventListener("change",()=>{localStorage.setItem("triscript-unicode-font-"+lang,fontSelects[lang].value);fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();syncFmOutput();renderPreview()});
+    fontSelects[lang].addEventListener("change",()=>{localStorage.setItem("triscript-unicode-font-"+lang,fontSelects[lang].value);fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();syncFmOutput();});
     editors[lang].addEventListener("input",()=>{
       syncDocumentFromEditor(lang)
     });
@@ -169,7 +189,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       editors.si.setSelectionRange(cursor,cursor);
       if(source!==singlishInput)singlishInput.setSelectionRange(cursor,cursor);
     }
-    syncMirrors();syncFmOutput();renderPreview();if(active===lang)updateCount();
+    syncMirrors();syncFmOutput();if(active===lang)updateCount();
   }
   function syncDocumentFromEditor(lang){syncDocumentFromSource(editors[lang],lang)}
   function typeSinhalaKey(key){
@@ -229,14 +249,37 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   };
   function buildKeyboard(){
     const grid=document.querySelector("#keygrid");grid.replaceChildren();
-    const guide=document.querySelector("#typingGuide");
-    const guides={
-      si:'<h3>සිංහල ටයිප් කිරීමේ මඟපෙන්වීම</h3><h4>ස්වර</h4><p><code>a</code> → අ · <code>aa</code> → ආ · <code>i</code> → ඉ · <code>ii</code> → ඊ · <code>u</code> → උ · <code>e</code> → එ · <code>ee</code> → ඒ · <code>o</code> → ඔ</p><h4>ක + ස්වර සංයෝග</h4><p><code>k</code> → ක් · <code>ka</code> → ක · <code>kaa</code> → කා · <code>ki</code> → කි · <code>kee</code> → කේ</p><h4>විශේෂ සංයෝග</h4><p><code>sh</code> → ශ · <code>ng</code> → ඞ · <code>ksh</code> → ක්‍ෂ · <code>x</code> → ක්‍ෂ</p>',
-      ta:'<h3>தமிழ் தட்டச்சு வழிகாட்டி</h3><h4>உயிரெழுத்துகள்</h4><p><code>a</code> → அ · <code>aa</code> → ஆ · <code>i</code> → இ · <code>ii</code> → ஈ · <code>u</code> → உ · <code>e</code> → எ · <code>o</code> → ஒ</p><h4>க + உயிர் சேர்க்கை</h4><p><code>k</code> → க் · <code>ka</code> → க · <code>kaa</code> → கா · <code>ki</code> → கி · <code>kee</code> → கே</p><h4>சிறப்பு எழுத்துகள்</h4><p><code>zh</code> → ழ் · <code>ng</code> → ங் · <code>th</code> → த் · <code>ஸ்ரீ</code> விசைப்பலகை பொத்தானில் உள்ளது</p>'
-    };
-    guide.innerHTML=active==="en"?"":guides[active];
-    guide.classList.toggle("hidden",active==="en");
     document.querySelector("#keyboardTitle").textContent=active==="si"?"සිංහල යතුරු පුවරුව":active==="ta"?"தமிழ் விசைப்பலகை":"English keyboard";
+    const guideButton=document.querySelector("#toggleGuide");
+    guideButton.hidden=active==="en";
+    if(active==="en"&&!guidePanel.classList.contains("reference-hidden")){guidePanel.classList.add("reference-hidden");updatePanelLayout()}
+    const guideOpen=!guidePanel.classList.contains("reference-hidden");
+    updatePanelLayout();
+    guideButton.textContent=active==="si"?(guideOpen?"අකුරු මඟපෙන්වීම සඟවන්න":"අකුරු මඟපෙන්වීම පෙන්වන්න"):active==="ta"?(guideOpen?"தட்டச்சு வழிகாட்டியை மறை":"தட்டச்சு வழிகாட்டியைக் காட்டு"):(guideOpen?"Hide typing guide":"Show typing guide");
+    guideButton.setAttribute("aria-expanded",String(guideOpen));
+    const guideTitle=document.querySelector("#guideTitle"),guideIntro=document.querySelector("#guideIntro"),guideContent=document.querySelector("#guideContent");
+    const reference=active==="si"?{
+      title:"සිංහල අකුරු ලියන ආකාරය",intro:"මෙම රෝම අකුරු ටයිප් කළ විට ඉදිරියේ ඇති සිංහල අකුර ලැබේ.",
+      sections:[
+        ["ස්වර අකුරු",[["a","අ"],["aa","ආ"],["i","ඉ"],["ii","ඊ"],["u","උ"],["uu","ඌ"],["e","එ"],["ee","ඒ"],["o","ඔ"],["oo","ඕ"],["ae","ඇ"],["aae","ඈ"]]],
+        ["ක අකුර සමඟ ස්වර",[["k","ක්"],["ka","ක"],["kaa","කා"],["ki","කි"],["kee","කේ"],["kae","කැ"],["kA","කෑ"]]],
+        ["විශේෂ අකුරු",[["sh","ශ"],["ng","ඞ"],["ksh","ක්‍ෂ"],["chh","ඡ"]]]
+      ]
+    }:{
+      title:"தமிழ் எழுத்துகளைத் தட்டச்சு செய்வது",intro:"இந்த ரோமன் எழுத்துகளைத் தட்டச்சு செய்தால் அதற்குரிய தமிழ் எழுத்து கிடைக்கும்.",
+      sections:[
+        ["உயிரெழுத்துகள்",[["a","அ"],["aa","ஆ"],["i","இ"],["ii","ஈ"],["u","உ"],["uu","ஊ"],["e","எ"],["ee","ஈ"],["o","ஒ"],["oo","ஊ"],["ai","ஐ"],["au","ஔ"]]],
+        ["க எழுத்துடன் உயிர் சேர்க்கை",[["k","க்"],["ka","க"],["kaa","கா"],["ki","கி"],["kee","கீ"]]],
+        ["சிறப்பு எழுத்துகள்",[["zh","ழ்"],["ng","ங்"],["sh","ஷ்"],["th","த்"],["ஸ்ரீ","ஸ்ரீ"]]]
+      ]
+    };
+    guideTitle.textContent=reference.title;guideIntro.textContent=reference.intro;guideContent.replaceChildren();
+    for(const [heading,rows] of reference.sections){
+      const section=document.createElement("section");section.className="guide-section";
+      const title=document.createElement("h3");title.textContent=heading;section.append(title);
+      for(const [input,output] of rows){const row=document.createElement("div");row.className="guide-row";const key=document.createElement("code");key.textContent=input;const glyph=document.createElement("strong");glyph.textContent=output;row.append(key,glyph);section.append(row)}
+      guideContent.append(section)
+    }
     document.querySelector("#keyboardHint").textContent=active==="si"?"අකුරක් ඇතුළත් කිරීමට එය ඔබන්න. | සාමාන්‍ය අකුරක් ලෙස ඇතුළත් වේ.":active==="ta"?"எழுத்தைச் சேர்க்க அதை அழுத்தவும். | சாதாரண குறியாகச் சேர்க்கப்படும்.":"Click a key to insert it. | is a normal text character.";
     document.querySelector("#clearCurrent").textContent=active==="si"?"මකන්න":active==="ta"?"அழி":"Clear";
     const layoutButton=document.querySelector("#toggleKeyboard"),layoutOpen=!document.querySelector(".keyboard").classList.contains("hidden");
@@ -256,13 +299,11 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     const next=tab.dataset.lang;
     savedCursor=editors[active].selectionStart??savedCursor;
     sinhalaComposition=null;tamilComposition=null;
-    active=next;editors[active].value=documentText;singlishInput.value=documentText;
+    active=next;if(active==="en")guidePanel.classList.add("reference-hidden");editors[active].value=documentText;singlishInput.value=documentText;
     if(active==="si")singlishInput.setSelectionRange(Math.min(savedCursor,documentText.length),Math.min(savedCursor,documentText.length));
     document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
     document.querySelector("#sinhala-workflow").classList.toggle("hidden",active!=="si");
     document.querySelectorAll(".other-workflow").forEach(w=>w.classList.toggle("hidden",w.dataset.workflow!==active));
-    document.querySelector("#editorLabel").textContent=language[active].label;
-    document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
     syncMirrors();syncFmOutput();buildKeyboard();updateCount();
     if(active==="si"){singlishInput.focus();singlishInput.setSelectionRange(Math.min(savedCursor,singlishInput.value.length),Math.min(savedCursor,singlishInput.value.length))}
     else{editors[active].focus();editors[active].setSelectionRange(savedCursor,savedCursor)}
@@ -275,7 +316,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     if(active==="si")sinhalaComposition=null;
     syncDocumentFromEditor(active);el.focus();el.setSelectionRange(savedCursor,savedCursor);
   }));
-  document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;sinhalaComposition=null;tamilComposition=null;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";syncMirrors();syncFmOutput();renderPreview();updateCount();(active==="si"?singlishInput:editors[active]).focus()});
+  document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;sinhalaComposition=null;tamilComposition=null;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";syncMirrors();syncFmOutput();updateCount();(active==="si"?singlishInput:editors[active]).focus()});
 
   document.querySelector("#copyFm").addEventListener("click",()=>copy(legacyText(documentText)));
   document.querySelectorAll(".copy-legacy").forEach(button=>button.addEventListener("click",()=>copy(legacyText(documentText))));
@@ -329,9 +370,9 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
     if(/[\u0D80-\u0DFF]/.test(input)) return input;
-    const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
+    const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["A","ආ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
     const consonants=[["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["Th","ඨ"],["Dh","ඪ"],["th","ත"],["dh","ද"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["P","ප"],["B","බ"],["M","ම"],["Y","ය"],["R","ර"],["L","ල"],["V","ව"],["S","ෂ"],["H","හ"],["t","ත"],["d","ද"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
-    const signs={"aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
+    const signs={"A":"ෑ","aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
     const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length),cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
     function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
     return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;let out="",i=0;while(i<w.length){const c=find(cm,w,i);if(c){i+=c[0].length;const v=find(vm,w,i);if(v){out+=c[1]+(signs[v[0]]||"");i+=v[0].length}else out+=c[1]+"්";continue}const v=find(vm,w,i);if(v){out+=v[1];i+=v[0].length}else out+=w[i++]}return out}).join("");
@@ -355,13 +396,6 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     }
     return runs;
   }
-  function renderPreview(){
-    const preview=document.querySelector("#preview");preview.replaceChildren();
-    for(const run of textRuns(documentText)){
-      const span=document.createElement("span");span.className="preview-part";span.lang=language[run.lang].tag;
-      span.style.fontFamily=fonts[run.lang][fontSelects[run.lang].value][1];span.textContent=run.text;preview.append(span);
-    }
-  }
   function fullText(){return documentText}
   async function copy(text){if(!text){notify("There is no text to copy yet.");return}try{await navigator.clipboard.writeText(text);notify("Copied to clipboard.")}catch(e){const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify("Copied to clipboard.")}}
   document.querySelector("#copyAll").addEventListener("click",()=>copy(fullText()));
@@ -381,7 +415,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   });
   function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
   document.querySelector("#savePdf").addEventListener("click",()=>{if(!fullText()){notify("Type some text before exporting.");return}window.print()});
-  syncMirrors();syncFmOutput();buildKeyboard();renderPreview();updateCount();
+  syncMirrors();syncFmOutput();buildKeyboard();updateCount();
 })();
 </script>
 </body>
