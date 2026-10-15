@@ -11,15 +11,15 @@
 button,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:0 auto;padding:28px 26px 40px}
 header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#172c59;color:#fff;font-size:18px;font-weight:800;letter-spacing:-2px}.brand h1{font-size:21px;line-height:1.2;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
 .actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:9px 13px;font-weight:650}.btn:hover{border-color:#9fb1d2;background:#f9fbff}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#244bd0}
-.workspace{display:grid;grid-template-columns:minmax(245px,300px) minmax(0,1fr);gap:18px;align-items:start}
+.workspace{display:grid;grid-template-columns:minmax(245px,300px) minmax(0,1fr);gap:18px;align-items:start}.workspace.keyboard-closed{grid-template-columns:minmax(0,1fr)}
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
 .keyboard{padding:17px;position:sticky;top:15px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
 .keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
-.si-workflow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:26px}.slot-head .fontpick{font-size:11px}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{min-height:235px;font-size:20px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.si-workflow{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:26px}.slot-head label{white-space:nowrap}.slot-head .fontpick{font-size:12px;flex:0 0 auto;margin-left:auto}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{min-height:235px;font-size:20px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}.typing-guide{margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fbfcff;font-size:12px;color:var(--muted)}.typing-guide h3{margin:0 0 8px;color:var(--ink);font-size:14px}.typing-guide h4{margin:10px 0 4px;color:var(--ink);font-size:12px}.typing-guide p{margin:0;line-height:1.7}.typing-guide code{font-family:ui-monospace,monospace;background:#edf2ff;border-radius:4px;padding:1px 4px;color:#243f8f}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
 .langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
 textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
 @media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
-@media(max-width:480px){.tabs{gap:4px}.tab{padding:8px 9px;font-size:13px}.langbar{align-items:flex-start;flex-direction:column}.fontpick{width:100%}.fontpick select{max-width:none;flex:1}textarea{min-height:190px}.editor-tools{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.tabs{gap:4px}.tab{padding:8px 9px;font-size:13px}.langbar{align-items:flex-start;flex-direction:column}.fontpick{width:100%}.fontpick select{max-width:none;flex:1}.slot-head .fontpick span{display:none}.slot-head .fontpick select{max-width:170px}textarea{min-height:190px}.editor-tools{align-items:flex-start;flex-direction:column}}
 @media print{body{background:white}.shell{max-width:none;padding:0}.brand,.keyboard,.tabs,.fontpick,.editor-tools,.actions,.preview-head{display:none!important}.workspace{display:block}.panel{border:0;box-shadow:none;padding:0}.editor{padding:0}textarea{display:none}.preview{display:block!important;border:0;padding:0;margin:0}.preview-text{font-size:14pt;line-height:1.7}}
 </style>
 </head>
@@ -28,15 +28,16 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
 <header>
   <div class="brand"><div class="mark" aria-hidden="true">සි</div><div><h1>TriScript Writer</h1><p>Type and format Sinhala, Tamil, and English in one place.</p></div></div>
   <div class="actions" aria-label="Export actions">
-    <button class="btn" id="copyAll">Copy all</button><button class="btn" id="saveTxt">Download TXT</button><button class="btn" id="saveDoc">Download Word</button><button class="btn primary" id="savePdf">Print / Save PDF</button>
+    <button class="btn" id="toggleKeyboard" aria-expanded="false">Show keyboard layout</button><button class="btn" id="copyAll">Copy all</button><button class="btn" id="saveTxt">Download TXT</button><button class="btn" id="saveDoc">Download Word</button><button class="btn primary" id="savePdf">Print / Save PDF</button>
   </div>
 </header>
-<div class="workspace">
-  <aside class="panel keyboard" aria-label="Clickable keyboard">
+<div class="workspace keyboard-closed">
+  <aside class="panel keyboard hidden" aria-label="Clickable keyboard">
     <div class="panel-title"><h2 id="keyboardTitle">Sinhala keyboard</h2><button class="btn" id="clearCurrent" title="Clear the selected language">Clear</button></div>
     <p class="hint" id="keyboardHint">Click a character to insert it at the cursor.</p>
     <div class="keygrid" id="keygrid"></div>
     <div class="keyboard-footer"><button class="key utility" data-insert="|">|</button><button class="key utility" data-insert=" ">Space</button><button class="key utility" data-action="backspace">⌫</button></div>
+    <div class="typing-guide hidden" id="typingGuide"></div>
   </aside>
   <main class="content">
     <section class="panel editor" aria-label="Writing area">
@@ -54,12 +55,12 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       <div class="si-workflow other-workflow hidden" data-workflow="ta" aria-label="தமிழ் தட்டச்சு பகுதி">
         <div class="si-slot"><label for="editor-ta">தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>ஆங்கில எழுத்துகளில் தட்டச்சு செய்தால் தமிழ் எழுத்துகளாக மாறும்; ஆவணம் தொடர்ந்து இருக்கும்</small></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><div class="fontpick"><span>யுனிகோடு எழுத்துரு</span><select id="font-ta" aria-label="Tamil Unicode font"></select></div></div><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
-        <div class="si-slot"><div class="slot-head"><label for="legacy-ta">தமிழ் மரபு / legacy output</label><div class="fontpick"><span>தமிழ் எழுத்துரு</span><select id="legacy-font-ta" aria-label="Tamil legacy font"><option>BAMINI-Tamil01</option><option>BAMINI-Tamil02</option><option>BAMINI-Tamil03</option><option>BAMINI-Tamil04</option><option>BAMINI-Tamil05</option></select></div></div><div id="legacy-ta" class="legacy-output" lang="ta" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>தமிழ் மற்றும் சிங்களம் மரபு குறியீடுகளாக மாறும்; ஆங்கிலம் மாறாது. Word கோப்பில் எழுத்துருக்கள் தனித்தனியாக அமைக்கப்படும்.</small><button class="btn copy-legacy">மரபு உரையை நகலெடுக்கவும்</button></div>
+        <div class="si-slot"><div class="slot-head"><label for="legacy-ta">தமிழ் மரபு / legacy output</label><div class="fontpick"><span>தமிழ் எழுத்துரு</span><select id="legacy-font-ta" aria-label="Tamil legacy font"><option>Bamini 12</option><option>Bamini 01</option><option>Bamini 02</option><option>Bamini 03</option><option>Bamini 04</option></select></div></div><div id="legacy-ta" class="legacy-output" lang="ta" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>தமிழ் மற்றும் சிங்களம் மரபு குறியீடுகளாக மாறும்; ஆங்கிலம் மாறாது. Word கோப்பில் எழுத்துருக்கள் தனித்தனியாக அமைக்கப்படும்.</small><button class="btn copy-legacy">மரபு உரையை நகலெடுக்கவும்</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="en" aria-label="English typing area">
         <div class="si-slot"><label for="editor-en">English typing</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-en">Unicode document</label><div class="fontpick"><span>Unicode font</span><select id="font-en" aria-label="English Unicode font"></select></div></div><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
-        <div class="si-slot"><label for="render-en">Legacy output preview</label><div id="render-en" class="legacy-output" lang="en" role="textbox" aria-readonly="true" aria-label="Mixed legacy output"></div><small>All scripts use their selected legacy font in the Word export.</small><button class="btn copy-legacy">Copy legacy output</button></div>
+        <div class="si-slot"><div class="slot-head"><label for="render-en">Legacy output preview</label><div class="fontpick"><span>FM font</span><select id="legacy-font-en" aria-label="English tab FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><div id="render-en" class="legacy-output" lang="en" role="textbox" aria-readonly="true" aria-label="Mixed legacy output"></div><small>All scripts use their selected legacy fonts in the Word export.</small><button class="btn copy-legacy">Copy legacy output</button></div>
       </div>
       <div class="editor-tools"><span id="count">0 characters</span><button class="btn" id="copyCurrent">Copy this language</button></div>
     </section>
@@ -97,21 +98,25 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   const tamilBaminiMap = {"ஸ்ரீ":"=","ஹௌ":"n`s","ஹோ":"N`h","ஹொ":"n`h","ஹை":"i`","ஹே":"N`","ஹெ":"n`","ஹூ":"`_","ஹு":"`{","ஹீ":"`P","ஹி":"`p","ஹா":"`h","ஹ்":"`;","ஹ":"`","ஸௌ":"n]s","ஸோ":"N]h","ஸொ":"n]h","ஸை":"i]","ஸே":"N]","ஸெ":"n]","ஸூ":"]_","ஸு":"]{","ஸீ":"]P","ஸி":"]p","ஸா":"]h","ஸ்":"];","ஸ":"]","ஜௌ":"n[s","ஜோ":"N[h","ஜொ":"n[h","ஜை":"i[","ஜே":"N[","ஜெ":"n[","ஜூ":"[_","ஜு":"[{","ஜீ":"[P","ஜி":"[p","ஜா":"[h","ஜ்":"[;","ஜ":"[","ஷௌ":"n\\s","ஷோ":"N\\h","ஷொ":"n\\h","ஷை":"i\\","ஷே":"N\\","ஷெ":"n\\","ஷு":"\\{","ஷூ":"\\_","ஷீ":"\\P","ஷி":"\\p","ஷா":"\\h","ஷ்":"\\;","ஷ":"\\","னௌ":"nds","னோ":"Ndh","னொ":"ndh","னை":"id","னே":"Nd","னெ":"nd","னூ":"D}","னு":"D","னீ":"dP","னி":"dp","னா":"dh","ன்":"d;","ன":"d","றௌ":"nws","றோ":"Nwh","றொ":"nwh","றை":"iw","றே":"Nw","றெ":"nw","றூ":"W}","று":"W","றீ":"wP","றி":"wp","றா":"wh","ற்":"w;","ற":"w","ளௌ":"nss","ளோ":"Nsh","ளொ":"nsh","ளை":"is","ளே":"Ns","ளெ":"ns","ளூ":"Sh","ளு":"S","ளீ":"sP","ளி":"sp","ளா":"sh","ள்":"s;","ள":"s","ழௌ":"nos","ழோ":"Noh","ழொ":"noh","ழை":"io","ழே":"No","ழெ":"no","ழூ":"*","ழு":"O","ழீ":"oP","ழி":"op","ழா":"oh","ழ்":"o;","ழ":"o","வௌ":"nts","வோ":"Nth","வொ":"nth","வை":"it","வே":"Nt","வெ":"nt","வூ":"T+","வு":"T","வீ":"tP","வி":"tp","வா":"th","வ்":"t;","வ":"t","லௌ":"nys","லோ":"Nyh","லொ":"nyh","லை":"iy","லே":"Ny","லெ":"ny","லூ":"Y}","லு":"Y","லீ":"yP","லி":"yp","லா":"yh","ல்":"y;","ல":"y","ரௌ":"nus","ரோ":"Nuh","ரொ":"nuh","ரை":"iu","ரே":"Nu","ரெ":"nu","ரூ":"&","ரு":"U","ரீ":"uP","ரி":"up","ரா":"uh","ர்":["u;","H","h;"],"ர":"u","யௌ":"nas","யோ":"Nah","யொ":"nah","யை":"ia","யே":"Na","யெ":"na","யூ":"A+","யு":"A","யீ":"aP","யி":"ap","யா":"ah","ய்":"a;","ய":"a","மௌ":"nks","மோ":"Nkh","மொ":"nkh","மை":"ik","மே":"Nk","மெ":"nk","மூ":"%","மு":"K","மீ":"kP","மி":"kp","மா":"kh","ம்":"k;","ம":"k","பௌ":"ngs","போ":"Ngh","பொ":"ngh","பை":"ig","பே":"Ng","பெ":"ng","பூ":"G+","பு":"G","பீ":"gP","பி":"gp","பா":"gh","ப்":"g;","ப":"g","நௌ":"nes","நோ":"Neh","நொ":"neh","நை":"ie","நே":"Ne","நெ":"ne","நூ":"E}","நு":"E","நீ":"eP","நி":"ep","நா":"eh","ந்":"e;","ந":"e","தௌ":"njs","தோ":"Njh","தொ":"njh","தை":"ij","தே":"Nj","தெ":"nj","தூ":"J}","து":"J","தீ":"jP","தி":"jp","தா":"jh","த்":"j;","த":"j","ணௌ":"nzs","ணோ":"Nzh","ணொ":"nzh","ணை":"iz","ணே":"Nz","ணெ":"nz","ணூ":"Z}","ணு":"Z","ணீ":"zP","ணி":"zp","ணா":"zh","ண்":"z;","ண":"z","டௌ":"nls","டோ":"Nlh","டொ":"nlh","டை":"il","டே":"Nl","டெ":"nl","டூ":"^","டு":"L","டீ":"B","டி":"b","டா":"lh","ட்":"l;","ட":"l","ஞௌ":"nQs","ஞோ":"NQh","ஞொ":"nQh","ஞை":"iQ","ஞே":"NQ","ஞெ":"nQ","ஞூ":"*","ஞு":"*","ஞீ":"QP","ஞி":"Qp","ஞா":"Qh","ஞ்":"Q;","ஞ":"Q","சௌ":"nrs","சோ":"Nrh","சொ":"nrh","சை":"ir","சே":"Nr","செ":"nr","சூ":"R+","சு":"R","சீ":"rP","சி":"rp","சா":"rh","ச்":"r;","ச":"r","ஙௌ":"nqs","ஙோ":"Nqh","ஙொ":"nqh","ஙை":"iq","ஙே":"Nq","ஙெ":"nq","ஙூ":"*","ஙு":"*","ஙீ":"qP","ஙி":"qp","ஙா":"qh","ங்":"q;","ங":"q","கௌ":"nfs","கோ":"Nfh","கொ":"nfh","கை":"if","கே":"Nf","கெ":"nf","கூ":"$","கு":"F","கீ":"fP","கி":"fp","கா":"fh","க்":"f;","க":"f","ஔ":"xs","ஓ":"X","ஒ":"x","ஐ":"I","ஏ":"V","எ":"v","ஊ":"C","உ":"c","ஈ":"<","இ":",","ஆ":"M","அ":"m"};
   const legacyFonts = {
     si:["FM Bindumathi","FM Malithi","FM Abhaya","FM Derana","FM Gemunu"],
-    ta:["BAMINI-Tamil01","BAMINI-Tamil02","BAMINI-Tamil03","BAMINI-Tamil04","BAMINI-Tamil05"]
+    ta:["Bamini 12","Bamini 01","Bamini 02","Bamini 03","Bamini 04"],
+    en:["FM Bindumathi","FM Malithi","FM Abhaya","FM Derana","FM Gemunu"]
   };
-  const legacyFontSelects = {si:document.querySelector("#legacy-font-si"),ta:document.querySelector("#legacy-font-ta")};
+  const legacyFontSelects = {si:document.querySelector("#legacy-font-si"),ta:document.querySelector("#legacy-font-ta"),en:document.querySelector("#legacy-font-en")};
   const language = {si:{name:"සිංහල",label:"සිංහල පාඨය",tag:"si"},ta:{name:"தமிழ்",label:"தமிழ் உரை",tag:"ta"},en:{name:"English",label:"English text",tag:"en"}};
   const values = {si:"",ta:"",en:""};
   let documentText = "";
   let savedCursor = 0;
-  let sourceDocStart = null;
-  let previousSinhalaText = "";
-  let sourceInputOffset = 0;
   let active = "si";
+  let sinhalaComposition = null;
   let tamilComposition = null;
   const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
   const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
   const labels = ["si","ta","en"];
+  document.querySelector("#toggleKeyboard").addEventListener("click",()=>{
+    const panel=document.querySelector(".keyboard"),workspace=document.querySelector(".workspace"),isOpen=panel.classList.contains("hidden");
+    panel.classList.toggle("hidden",!isOpen);workspace.classList.toggle("keyboard-closed",!isOpen);
+    document.querySelector("#toggleKeyboard").setAttribute("aria-expanded",String(isOpen));buildKeyboard();
+  });
   const singlishInput = document.querySelector("#singlish-si");
   const fmOutput = document.querySelector("#fm-si");
   function notify(message){const el=document.querySelector("#status");el.textContent=message;el.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.classList.remove("show"),2100)}
@@ -123,11 +128,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
     fontSelects[lang].addEventListener("change",()=>{localStorage.setItem("triscript-unicode-font-"+lang,fontSelects[lang].value);fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();syncFmOutput();renderPreview()});
     editors[lang].addEventListener("input",()=>{
-      documentText=editors[lang].value;
-      savedCursor=editors[lang].selectionStart??documentText.length;
-      labels.forEach(key=>{values[key]=documentText;if(key!==lang)editors[key].value=documentText});
-      if(lang==="si"){sourceDocStart=null;previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
-      syncMirrors();syncFmOutput();renderPreview();if(active===lang)updateCount()
+      syncDocumentFromEditor(lang)
     });
   }
   function transliterateTamil(input){
@@ -158,11 +159,36 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       return out;
     }).join("");
   }
-  function syncDocumentFromEditor(lang){
-    documentText=editors[lang].value;savedCursor=editors[lang].selectionStart??documentText.length;
-    labels.forEach(key=>{values[key]=documentText;if(key!==lang)editors[key].value=documentText});
+  function syncDocumentFromSource(source,lang){
+    documentText=source.value;savedCursor=source.selectionStart??documentText.length;
+    labels.forEach(key=>{values[key]=documentText;if(source!==editors[key])editors[key].value=documentText});
+    if(source!==singlishInput)singlishInput.value=documentText;
+    const cursor=Math.min(savedCursor,documentText.length);
+    if(source===singlishInput)singlishInput.setSelectionRange(cursor,cursor);
+    if(active==="si"){
+      editors.si.setSelectionRange(cursor,cursor);
+      if(source!==singlishInput)singlishInput.setSelectionRange(cursor,cursor);
+    }
     syncMirrors();syncFmOutput();renderPreview();if(active===lang)updateCount();
   }
+  function syncDocumentFromEditor(lang){syncDocumentFromSource(editors[lang],lang)}
+  function typeSinhalaKey(key){
+    const el=singlishInput,start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
+    if(sinhalaComposition&&(start!==sinhalaComposition.start+sinhalaComposition.output.length||start!==end))sinhalaComposition=null;
+    if(!sinhalaComposition)sinhalaComposition={start,end,roman:"",output:""};
+    sinhalaComposition.roman+=key;
+    const converted=transliterateSinhlish(sinhalaComposition.roman);
+    el.setRangeText(converted,sinhalaComposition.start,sinhalaComposition.start+sinhalaComposition.output.length,"end");
+    sinhalaComposition.output=converted;
+    syncDocumentFromSource(el,"si");
+    el.setSelectionRange(sinhalaComposition.start+converted.length,sinhalaComposition.start+converted.length);
+  }
+  singlishInput.addEventListener("beforeinput",event=>{
+    if(event.inputType==="insertText"&&event.data&&/^[a-z]$/i.test(event.data)){
+      event.preventDefault();typeSinhalaKey(event.data);
+    }else{sinhalaComposition=null}
+  });
+  singlishInput.addEventListener("input",()=>syncDocumentFromSource(singlishInput,"si"));
   function typeTamilKey(key){
     const el=editors.ta,start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     if(tamilComposition&&(start!==tamilComposition.start+tamilComposition.output.length||start!==end))tamilComposition=null;
@@ -203,9 +229,18 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   };
   function buildKeyboard(){
     const grid=document.querySelector("#keygrid");grid.replaceChildren();
+    const guide=document.querySelector("#typingGuide");
+    const guides={
+      si:'<h3>සිංහල ටයිප් කිරීමේ මඟපෙන්වීම</h3><h4>ස්වර</h4><p><code>a</code> → අ · <code>aa</code> → ආ · <code>i</code> → ඉ · <code>ii</code> → ඊ · <code>u</code> → උ · <code>e</code> → එ · <code>ee</code> → ඒ · <code>o</code> → ඔ</p><h4>ක + ස්වර සංයෝග</h4><p><code>k</code> → ක් · <code>ka</code> → ක · <code>kaa</code> → කා · <code>ki</code> → කි · <code>kee</code> → කේ</p><h4>විශේෂ සංයෝග</h4><p><code>sh</code> → ශ · <code>ng</code> → ඞ · <code>ksh</code> → ක්‍ෂ · <code>x</code> → ක්‍ෂ</p>',
+      ta:'<h3>தமிழ் தட்டச்சு வழிகாட்டி</h3><h4>உயிரெழுத்துகள்</h4><p><code>a</code> → அ · <code>aa</code> → ஆ · <code>i</code> → இ · <code>ii</code> → ஈ · <code>u</code> → உ · <code>e</code> → எ · <code>o</code> → ஒ</p><h4>க + உயிர் சேர்க்கை</h4><p><code>k</code> → க் · <code>ka</code> → க · <code>kaa</code> → கா · <code>ki</code> → கி · <code>kee</code> → கே</p><h4>சிறப்பு எழுத்துகள்</h4><p><code>zh</code> → ழ் · <code>ng</code> → ங் · <code>th</code> → த் · <code>ஸ்ரீ</code> விசைப்பலகை பொத்தானில் உள்ளது</p>'
+    };
+    guide.innerHTML=active==="en"?"":guides[active];
+    guide.classList.toggle("hidden",active==="en");
     document.querySelector("#keyboardTitle").textContent=active==="si"?"සිංහල යතුරු පුවරුව":active==="ta"?"தமிழ் விசைப்பலகை":"English keyboard";
     document.querySelector("#keyboardHint").textContent=active==="si"?"අකුරක් ඇතුළත් කිරීමට එය ඔබන්න. | සාමාන්‍ය අකුරක් ලෙස ඇතුළත් වේ.":active==="ta"?"எழுத்தைச் சேர்க்க அதை அழுத்தவும். | சாதாரண குறியாகச் சேர்க்கப்படும்.":"Click a key to insert it. | is a normal text character.";
     document.querySelector("#clearCurrent").textContent=active==="si"?"මකන්න":active==="ta"?"அழி":"Clear";
+    const layoutButton=document.querySelector("#toggleKeyboard"),layoutOpen=!document.querySelector(".keyboard").classList.contains("hidden");
+    layoutButton.textContent=active==="si"?(layoutOpen?"යතුරුපුවරුව සඟවන්න":"යතුරුපුවරුව පෙන්වන්න"):active==="ta"?(layoutOpen?"விசைப்பலகையை மறை":"விசைப்பலகையைக் காட்டு"):(layoutOpen?"Hide keyboard layout":"Show keyboard layout");
     keys[active].forEach(([glyph,insert])=>{const b=document.createElement("button");b.type="button";b.className="key";b.textContent=glyph;b.setAttribute("aria-label","Insert "+glyph);b.addEventListener("click",()=>insertAtCursor(insert));grid.append(b)});
   }
   function insertAtCursor(text){
@@ -213,43 +248,35 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     el.setRangeText(text,start,end,"end");documentText=el.value;savedCursor=el.selectionStart??documentText.length;
     labels.forEach(key=>{values[key]=documentText;if(key!==active)editors[key].value=documentText});
-    if(active==="si"){sourceDocStart=null;previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
-    syncMirrors();syncFmOutput();el.focus();renderPreview();updateCount();
+    if(active==="si")sinhalaComposition=null;
+    syncDocumentFromEditor(active);
+    el.focus();el.setSelectionRange(savedCursor,savedCursor);
   }
   document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
     const next=tab.dataset.lang;
     savedCursor=editors[active].selectionStart??savedCursor;
-    if(active==="si"&&next!=="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=documentText;sourceInputOffset=singlishInput.value.length}
-    tamilComposition=null;
-    active=next;editors[active].value=documentText;
-    if(active==="si"){singlishInput.value=documentText;sourceDocStart=Math.min(savedCursor,documentText.length);previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
+    sinhalaComposition=null;tamilComposition=null;
+    active=next;editors[active].value=documentText;singlishInput.value=documentText;
+    if(active==="si")singlishInput.setSelectionRange(Math.min(savedCursor,documentText.length),Math.min(savedCursor,documentText.length));
     document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
     document.querySelector("#sinhala-workflow").classList.toggle("hidden",active!=="si");
     document.querySelectorAll(".other-workflow").forEach(w=>w.classList.toggle("hidden",w.dataset.workflow!==active));
     document.querySelector("#editorLabel").textContent=language[active].label;
     document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
     syncMirrors();syncFmOutput();buildKeyboard();updateCount();
-    if(active==="si"){singlishInput.focus();singlishInput.setSelectionRange(singlishInput.value.length,singlishInput.value.length)}
+    if(active==="si"){singlishInput.focus();singlishInput.setSelectionRange(Math.min(savedCursor,singlishInput.value.length),Math.min(savedCursor,singlishInput.value.length))}
     else{editors[active].focus();editors[active].setSelectionRange(savedCursor,savedCursor)}
   }));
   document.querySelectorAll("[data-insert]").forEach(b=>b.addEventListener("click",()=>insertAtCursor(b.dataset.insert)));
   document.querySelectorAll("[data-action=backspace]").forEach(b=>b.addEventListener("click",()=>{
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     if(start===end&&start>0)el.setSelectionRange(start-1,end);
-    el.setRangeText("",el.selectionStart,el.selectionEnd,"end");documentText=el.value;savedCursor=el.selectionStart??documentText.length;
-    labels.forEach(key=>{values[key]=documentText;if(key!==active)editors[key].value=documentText});
-    if(active==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
-    syncMirrors();syncFmOutput();el.focus();renderPreview();updateCount();
+    el.setRangeText("",el.selectionStart,el.selectionEnd,"end");savedCursor=el.selectionStart??el.value.length;
+    if(active==="si")sinhalaComposition=null;
+    syncDocumentFromEditor(active);el.focus();el.setSelectionRange(savedCursor,savedCursor);
   }));
-  document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";sourceDocStart=null;previousSinhalaText="";syncMirrors();syncFmOutput();renderPreview();updateCount();editors[active].focus()});
-  singlishInput.addEventListener("input",()=>{
-    if(sourceDocStart===null)sourceDocStart=Math.min(savedCursor,documentText.length);
-    const replacement=transliterateSinhlish(singlishInput.value.slice(sourceInputOffset));
-    documentText=documentText.slice(0,sourceDocStart)+replacement+documentText.slice(sourceDocStart+previousSinhalaText.length);
-    previousSinhalaText=replacement;savedCursor=sourceDocStart+replacement.length;
-    labels.forEach(key=>{values[key]=documentText;editors[key].value=documentText});
-    editors.si.setSelectionRange(savedCursor,savedCursor);syncMirrors();syncFmOutput();renderPreview();if(active==="si")updateCount()
-  });
+  document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;sinhalaComposition=null;tamilComposition=null;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";syncMirrors();syncFmOutput();renderPreview();updateCount();(active==="si"?singlishInput:editors[active]).focus()});
+
   document.querySelector("#copyFm").addEventListener("click",()=>copy(legacyText(documentText)));
   document.querySelectorAll(".copy-legacy").forEach(button=>button.addEventListener("click",()=>copy(legacyText(documentText))));
   function legacyText(input){
@@ -268,7 +295,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     for(const run of textRuns(documentText)){
       const span=document.createElement("span");
       span.lang=language[run.lang].tag;
-      span.style.fontFamily=run.lang==="si"?'"'+legacyFontSelects.si.value+'", serif':run.lang==="ta"?'"'+legacyFontSelects.ta.value+'", serif':fonts.en[fontSelects.en.value][1];
+      span.style.fontFamily='"'+legacyFontSelects[run.lang].value+'", serif';
       span.textContent=run.lang==="si"?unicodeToFmBindumathi(run.text):run.lang==="ta"?unicodeToTamilBamini(run.text):run.text;
       target.append(span);
     }
@@ -281,11 +308,21 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     }
     return text;
   }
-  for(const lang of ["si","ta"]){
-    const saved=localStorage.getItem("triscript-legacy-font-"+lang);
-    if(saved&&legacyFonts[lang].includes(saved))legacyFontSelects[lang].value=saved;
+  const savedFm=localStorage.getItem("triscript-legacy-font-si");
+  const savedEnglishFm=localStorage.getItem("triscript-legacy-font-en");
+  if(savedFm&&legacyFonts.si.includes(savedFm))legacyFontSelects.si.value=savedFm;
+  else if(savedEnglishFm&&legacyFonts.si.includes(savedEnglishFm))legacyFontSelects.si.value=savedEnglishFm;
+  legacyFontSelects.en.value=legacyFontSelects.si.value;
+  const savedTamil=localStorage.getItem("triscript-legacy-font-ta");
+  if(savedTamil&&legacyFonts.ta.includes(savedTamil))legacyFontSelects.ta.value=savedTamil;
+  for(const lang of ["si","ta","en"]){
     legacyFontSelects[lang].addEventListener("change",()=>{
-      localStorage.setItem("triscript-legacy-font-"+lang,legacyFontSelects[lang].value);
+      if(lang==="si"||lang==="en"){
+        const chosen=legacyFontSelects[lang].value;
+        legacyFontSelects.si.value=chosen;legacyFontSelects.en.value=chosen;
+        localStorage.setItem("triscript-legacy-font-si",chosen);
+        localStorage.setItem("triscript-legacy-font-en",chosen);
+      }else localStorage.setItem("triscript-legacy-font-ta",legacyFontSelects.ta.value);
       syncMirrors();syncFmOutput();
     });
   }
@@ -335,7 +372,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     const spans=textRuns(documentText).map(run=>'<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(fonts[run.lang][fontSelects[run.lang].value][1])+'">'+escapeHtml(run.text)+'</span>').join("");
     const legacySpans=textRuns(documentText).map(run=>{
       const encoded=run.lang==="si"?unicodeToFmBindumathi(run.text):run.lang==="ta"?unicodeToTamilBamini(run.text):run.text;
-      const family=run.lang==="si"?legacyFontSelects.si.value:run.lang==="ta"?legacyFontSelects.ta.value:fonts.en[fontSelects.en.value][0];
+      const family=legacyFontSelects[run.lang].value;
       return '<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(family)+'">'+escapeHtml(encoded)+'</span>';
     }).join("");
     const body='<p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(legacySpans?'<p style="white-space:pre-wrap;line-height:1.7">'+legacySpans+'</p>':"");
