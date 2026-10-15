@@ -537,7 +537,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   }
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
-    if(/[\\u0D80-\\u0DFF]/.test(input)) return input;
+    if(/[\u0D80-\u0DFF]/.test(input)) return input;
     // Helakuru phonetic spellings are primary; app-specific combinations remain aliases.
     const vowels=[
       ["aae","ඈ"],["ææ","ඈ"],["AA","ඈ"],["Aa","ඈ"],["aa","ආ"],["ā","ආ"],
@@ -566,8 +566,8 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length);
     const cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
     function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
-    return input.split(/(\\s+|[^\\p{L}]+)/u).map(w=>{
-      if(!w||/^\\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;
+    return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{
+      if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;
       let out="",i=0;
       while(i<w.length){
         const con=find(cm,w,i);
