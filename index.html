@@ -475,8 +475,8 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     if(active==="si")sinhalaComposition=null;
     syncDocumentFromEditor(active);el.focus();el.setSelectionRange(savedCursor,savedCursor);
   }));
-  document.querySelector("#copyFm").addEventListener("click",()=>copy(legacyText(documentText)));
-  document.querySelectorAll(".copy-legacy").forEach(button=>button.addEventListener("click",()=>copy(legacyText(documentText))));
+  document.querySelector("#copyFm").addEventListener("click",()=>copy(legacyText(documentText),legacyClipboardHtml(documentText)));
+  document.querySelectorAll(".copy-legacy").forEach(button=>button.addEventListener("click",()=>copy(legacyText(documentText),legacyClipboardHtml(documentText))));
   function legacyText(input){
     return textRuns(input).map(run=>run.lang==="si"?unicodeToFmBindumathi(run.text):run.lang==="ta"?unicodeToTamilBamini(run.text):run.text).join("");
   }
@@ -554,9 +554,41 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     return runs;
   }
   function fullText(){return documentText}
-  async function copy(text){if(!text){notify("There is no text to copy yet.");return}try{await navigator.clipboard.writeText(text);notify("Copied to clipboard.")}catch(e){const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify("Copied to clipboard.")}}
-  document.querySelector("#copyAll").addEventListener("click",()=>copy(fullText()));
-  document.querySelector("#copyCurrent").addEventListener("click",()=>copy(fullText()));
+  function unicodeClipboardHtml(input){
+    const spans=textRuns(input).map(run=>'<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(fonts[run.lang][fontSelects[run.lang].value][1])+'">'+escapeHtml(run.text)+'</span>').join("");
+    return '<!doctype html><html><head><meta charset="utf-8"></head><body><div style="white-space:pre-wrap;line-height:1.7">'+spans+'</div></body></html>';
+  }
+  function legacyClipboardHtml(input){
+    const spans=textRuns(input).map(run=>{
+      const encoded=run.lang==="si"?unicodeToFmBindumathi(run.text):run.lang==="ta"?unicodeToTamilBamini(run.text):run.text;
+      return '<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(legacyFontSelects[run.lang].value)+'">'+escapeHtml(encoded)+'</span>';
+    }).join("");
+    return '<!doctype html><html><head><meta charset="utf-8"></head><body><div style="white-space:pre-wrap;line-height:1.7">'+spans+'</div></body></html>';
+  }
+  async function copy(text,html){
+    if(!text){notify("There is no text to copy yet.");return}
+    try{
+      if(html&&navigator.clipboard?.write&&window.ClipboardItem){
+        await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([html],{type:"text/html"}),"text/plain":new Blob([text],{type:"text/plain"})})]);
+        notify("Copied with font formatting.");return;
+      }
+      await navigator.clipboard.writeText(text);notify("Copied to clipboard.");
+    }catch(e){
+      const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify(html?"Copied as plain text. Select the matching font in Word.":"Copied to clipboard.");
+    }
+  }
+  document.querySelector("#copyAll").addEventListener("click",()=>copy(fullText(),unicodeClipboardHtml(fullText())));
+  document.querySelector("#copyCurrent").addEventListener("click",()=>copy(fullText(),unicodeClipboardHtml(fullText())));
+  ["#editor-si","#unicode-ta","#unicode-en"].forEach(selector=>{
+    const area=document.querySelector(selector);
+    area.addEventListener("copy",event=>{
+      const selected=area.value.slice(area.selectionStart??0,area.selectionEnd??area.value.length);
+      if(!selected||!event.clipboardData)return;
+      event.preventDefault();
+      event.clipboardData.setData("text/plain",selected);
+      event.clipboardData.setData("text/html",unicodeClipboardHtml(selected));
+    });
+  });
   function download(name,mime,text){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
   document.querySelector("#saveTxt").addEventListener("click",()=>download("triscript-document.txt","text/plain;charset=utf-8",fullText()));
   document.querySelector("#saveDoc").addEventListener("click",()=>{
@@ -566,7 +598,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       const family=legacyFontSelects[run.lang].value;
       return '<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(family)+'">'+escapeHtml(encoded)+'</span>';
     }).join("");
-    const body='<p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(legacySpans?'<p style="white-space:pre-wrap;line-height:1.7">'+legacySpans+'</p>':"");
+    const body='<h2>Unicode text</h2><p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(legacySpans?'<h2>Legacy output</h2><p style="white-space:pre-wrap;line-height:1.7">'+legacySpans+'</p>':"");
     const doc='<!doctype html><html><head><meta charset="utf-8"><title>TriScript document</title></head><body>'+body+"</body></html>";
     download("triscript-document.doc",'application/msword;charset=utf-8',doc);
   });
