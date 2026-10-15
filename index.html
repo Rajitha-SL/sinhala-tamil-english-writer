@@ -393,25 +393,31 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
 
     const guideTitle=document.querySelector("#guideTitle"),guideIntro=document.querySelector("#guideIntro"),guideContent=document.querySelector("#guideContent");
     const reference=active==="si"?{
-      title:"සිංහල අකුරු සංයෝග",intro:"අකුර ඉහළින්ද, ටයිප් කළ යුතු ඉංග්‍රීසි අකුරු පහළින්ද පෙන්වයි.",
+      title:"සිංහල අකුරු සංයෝග",intro:"Helakuru අකුරු සංයෝග ප්‍රධාන ලෙස පෙන්වයි; අමතර පැරණි සංයෝගද සහාය දක්වයි.",
       sections:[
-        ["ස්වර අකුරු",[
-          ["අ","a"],["ආ","aa"],["ඇ","ae"],["ඈ","aae"],["ඉ","i"],["ඊ","ii"],
-          ["උ","u"],["ඌ","uu"],["එ","e"],["ඒ","ee"],["ඔ","o"],["ඕ","oo"]
+        ["ස්වර අකුරු — Helakuru",[
+          ["අ","a"],["ආ","aa"],["ඇ","A"],["ඈ","Aa / AA"],["ඉ","i"],["ඊ","ii"],
+          ["උ","u"],["ඌ","uu"],["ඍ","R"],["ඎ","Ru"],["එ","e"],["ඒ","ee"],["ඓ","ai"],
+          ["ඔ","o"],["ඕ","oo"],["ඖ","au / ou"]
         ]],
-        ["ක අකුර හා ස්වර සංයෝග",[
-          ["ක්","k"],["ක","ka"],["කා","kaa"],["කැ","kae"],["කෑ","kaae"],
-          ["කි","ki"],["කී","kii"],["කු","ku"],["කූ","kuu"],["කෙ","ke"],
-          ["කේ","kee"],["කො","ko"],["කෝ","koo"]
+        ["ක අකුර සමඟ ස්වර සංයෝග",[
+          ["ක්","k"],["ක","ka"],["කා","kaa"],["කැ","kA"],["කෑ","kAa"],["කි","ki"],
+          ["කී","kii"],["කු","ku"],["කූ","kuu"],["කෙ","ke"],["කේ","kee"],["කෛ","kai (kI alias)"],
+          ["කො","ko"],["කෝ","koo"],["කෞ","kau"],["ක්‍ර","kra"],["ක්‍රා","kraa"],["ක්‍ය","kYa"]
         ]],
-        ["t සහ th අකුරු වෙනස",[
-          ["ට්","t"],["ත්","th"],["ටු","tu"],["තු","thu"],["ත්‍ර","thra"],["වි","vi"]
+        ["Helakuru ව්‍යංජන සහ සඤ්ඤක අකුරු",[
+          ["ක","ka"],["ඛ","kha"],["ග","ga"],["ඝ","gha"],["ච","cha"],["ඡ","chha"],["ජ","ja"],
+          ["ට","ta"],["ඨ","Ta"],["ඩ","da"],["ඪ","Da"],["ත","tha"],["ථ","thha"],["ද","dha / q"],
+          ["ධ","dhha"],["න","na"],["ණ","Na"],["ප","pa"],["ඵ","pha"],["බ","ba"],["භ","bha"],
+          ["ම","ma"],["ය","ya"],["ර","ra"],["ල","la"],["ළ","La"],["ව","wa / va"],["ස","sa"],
+          ["ශ","sha"],["ෂ","Sa / Sha"],["හ","ha"],["ෆ","fa"]
         ]],
-        ["සඤ්ඤක අකුරු සහ විශේෂ සංයෝග",[
-          ["ඟ","ngga"],["ඦ","njja"],["ඬ","ndda"],["ඳ","ndha"],["ඹ","mba"],
-          ["ඥ","gna"],["ක්‍ෂ","ksha"],["ඡ","chha"],["ශ","sha"],["ඤ","nya"]
-        ]],
-              ]
+        ["Helakuru විශේෂ අකුරු සහ පවතින අමතර සංයෝග",[
+          ["ඟ","zga (ngg alias)"],["ඦ","zja (njj alias)"],["ඬ","zda (ndd alias)"],["ඳ","zdha / zqa (ndh alias)"],
+          ["ඤ","zka (ny alias)"],["ඥ","zha (gn alias)"],["ඹ","Ba (mb alias)"],["ළු","Lu"],["ළූ","Luu"],
+          ["ඞ","ng"],["ඣ","jh"],["ක්‍ෂ","ksh / x"],["කං","kax / kazn"],["කඃ","kaH"],["ත්‍ර","thra"],["වි","vi"]
+        ]]
+      ]
     }:{
       title:"தமிழ் எழுத்துக் கூட்டல்கள்",intro:"எழுத்து மேலேயும், தட்டச்சு செய்ய வேண்டிய ஆங்கில விசைகள் கீழேயும் காட்டப்பட்டுள்ளன.",
       sections:[
@@ -531,21 +537,42 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   }
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
-    if(/[\u0D80-\u0DFF]/.test(input)) return input;
-    const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["A","ආ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
-    const consonants=[["ngg","ඟ"],["njj","ඦ"],["ndd","ඬ"],["ndh","ඳ"],["mb","ඹ"],["gn","ඥ"],["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["Th","ඨ"],["Dh","ඪ"],["th","ත"],["dh","ද"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["P","ප"],["B","බ"],["M","ම"],["Y","ය"],["R","ර"],["L","ල"],["V","ව"],["S","ෂ"],["H","හ"],["t","ට"],["d","ඩ"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
-    const signs={"A":"ෑ","aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
-    const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length),cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
+    if(/[\\u0D80-\\u0DFF]/.test(input)) return input;
+    // Helakuru phonetic spellings are primary; app-specific combinations remain aliases.
+    const vowels=[
+      ["aae","ඈ"],["ææ","ඈ"],["AA","ඈ"],["Aa","ඈ"],["aa","ආ"],["ā","ආ"],
+      ["A","ඇ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ī","ඊ"],["uu","ඌ"],["ū","ඌ"],
+      ["ee","ඒ"],["ai","ඓ"],["au","ඖ"],["ou","ඖ"],["oo","ඕ"],["Ru","ඎ"],["R","ඍ"],
+      ["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"],["I","ඓ"]
+    ];
+    const signs={
+      "aa":"ා","ā":"ා","A":"ැ","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","AA":"ෑ","Aa":"ෑ",
+      "ii":"ී","ī":"ී","uu":"ූ","ū":"ූ","ee":"ේ","ai":"ෛ","I":"ෛ","oo":"ෝ","au":"ෞ","ou":"ෞ",
+      "i":"ි","u":"ු","e":"ෙ","o":"ො"
+    };
+    const consonants=[
+      ["zdh","ඳ"],["zj","ඦ"],["zd","ඬ"],["zg","ඟ"],["zk","ඤ"],["zh","ඥ"],
+      ["chh","ඡ"],["thh","ථ"],["dhh","ධ"],["ksh","ක්‍ෂ"],
+      ["kh","ඛ"],["gh","ඝ"],["ph","ඵ"],["bh","භ"],
+      ["Th","ඨ"],["Dh","ඪ"],["Sh","ෂ"],
+      ["ngg","ඟ"],["njj","ඦ"],["ndd","ඬ"],["ndh","ඳ"],["mb","ඹ"],["gn","ඥ"],["ny","ඤ"],
+      ["jh","ඣ"],["ch","ච"],["ng","ඞ"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],
+      ["k","ක"],["g","ග"],["G","ඝ"],["c","ච"],["C","ඡ"],["j","ජ"],
+      ["t","ට"],["T","ඨ"],["d","ඩ"],["D","ඪ"],["th","ත"],["dh","ද"],["q","ද"],
+      ["n","න"],["N","ණ"],["p","ප"],["P","ප"],["b","බ"],["B","ඹ"],["m","ම"],["M","ම"],
+      ["y","ය"],["Y","ය"],["r","ර"],["l","ල"],["L","ළ"],["v","ව"],["V","ව"],["w","ව"],
+      ["s","ස"],["S","ෂ"],["sh","ශ"],["h","හ"],["H","හ"],["f","ෆ"],["x","ක්‍ෂ"]
+    ];
+    const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length);
+    const cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
     function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
-    return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{
-      if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;
+    return input.split(/(\\s+|[^\\p{L}]+)/u).map(w=>{
+      if(!w||/^\\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;
       let out="",i=0;
       while(i<w.length){
         const con=find(cm,w,i);
         if(con){
           i+=con[0].length;
-          // In this typing scheme, r after a dead consonant creates rakaranshaya:
-          // thra -> ත්‍ර, kra -> ක්‍ර, etc.
           if(w[i]==="r"){
             const vowel=find(vm,w,i+1);
             if(i+1===w.length||vowel){
@@ -555,8 +582,14 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
             }
           }
           const vowel=find(vm,w,i);
-          if(vowel){out+=con[1]+(signs[vowel[0]]||"");i+=vowel[0].length}
-          else out+=con[1]+"්";
+          if(vowel){
+            out+=con[1]+(signs[vowel[0]]||"");i+=vowel[0].length;
+            const modifier=find([["zn","ං"],["x","ං"],["X","ඞ"],["H","ඃ"]],w,i);
+            if(modifier){out+=modifier[1];i+=modifier[0].length}
+          }else{
+            // q is Helakuru's ද key; x remains the app's complete ක්‍ෂ alias.
+            out+=((con[0]==="q"||con[0]==="x")?con[1]:con[1]+"්");
+          }
           continue;
         }
         const vowel=find(vm,w,i);
