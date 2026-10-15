@@ -155,13 +155,13 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(editors.si.value);}
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
-    if(/[\\u0D80-\\u0DFF]/.test(input)) return input;
+    if(/[\u0D80-\u0DFF]/.test(input)) return input;
     const vowels=[["aae","ඈ"],["ææ","ඈ"],["aa","ආ"],["ae","ඇ"],["æ","ඇ"],["ii","ඊ"],["ee","ඒ"],["uu","ඌ"],["oo","ඕ"],["ai","ඓ"],["au","ඖ"],["ā","ආ"],["ī","ඊ"],["ū","ඌ"],["a","අ"],["i","ඉ"],["u","උ"],["e","එ"],["o","ඔ"]];
     const consonants=[["ksh","ක්‍ෂ"],["chh","ඡ"],["kh","ඛ"],["gh","ඝ"],["jh","ඣ"],["Th","ඨ"],["Dh","ඪ"],["th","ත"],["dh","ද"],["ph","ඵ"],["bh","භ"],["sh","ශ"],["ng","ඞ"],["ny","ඤ"],["ch","ච"],["ṭh","ඨ"],["ḍh","ඪ"],["ṭ","ට"],["ḍ","ඩ"],["ṇ","ණ"],["ñ","ඤ"],["k","ක"],["g","ග"],["c","ච"],["j","ජ"],["T","ට"],["D","ඩ"],["N","ණ"],["P","ප"],["B","බ"],["M","ම"],["Y","ය"],["R","ර"],["L","ල"],["V","ව"],["S","ෂ"],["H","හ"],["t","ත"],["d","ද"],["n","න"],["p","ප"],["b","බ"],["m","ම"],["y","ය"],["r","ර"],["l","ල"],["v","ව"],["w","ව"],["s","ස"],["h","හ"],["f","ෆ"],["q","ක්"],["x","ක්‍ෂ"]];
     const signs={"aa":"ා","ā":"ා","ae":"ැ","æ":"ැ","aae":"ෑ","ææ":"ෑ","ii":"ී","ī":"ී","ee":"ේ","uu":"ූ","ū":"ූ","oo":"ෝ","ai":"ෛ","au":"ෞ","i":"ි","u":"ු","e":"ෙ","o":"ො"};
     const vm=[...vowels].sort((a,b)=>b[0].length-a[0].length),cm=[...consonants].sort((a,b)=>b[0].length-a[0].length);
     function find(list,w,i){for(const [k,v] of list)if(w.slice(i,i+k.length)===k)return[k,v];return null}
-    return input.split(/(\\s+|[^\\p{L}]+)/u).map(w=>{if(!w||/^\\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;let out="",i=0;while(i<w.length){const c=find(cm,w,i);if(c){i+=c[0].length;const v=find(vm,w,i);if(v){out+=c[1]+(signs[v[0]]||"");i+=v[0].length}else out+=c[1]+"්";continue}const v=find(vm,w,i);if(v){out+=v[1];i+=v[0].length}else out+=w[i++]}return out}).join("");
+    return input.split(/(\s+|[^\p{L}]+)/u).map(w=>{if(!w||/^\s+$/.test(w)||/[^a-zA-Zāīūæṭḍṇñ]/.test(w))return w;let out="",i=0;while(i<w.length){const c=find(cm,w,i);if(c){i+=c[0].length;const v=find(vm,w,i);if(v){out+=c[1]+(signs[v[0]]||"");i+=v[0].length}else out+=c[1]+"්";continue}const v=find(vm,w,i);if(v){out+=v[1];i+=v[0].length}else out+=w[i++]}return out}).join("");
   }
   function unicodeToFmBindumathi(input){
     let t=input.normalize("NFC");
