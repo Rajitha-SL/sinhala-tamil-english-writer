@@ -15,9 +15,9 @@ header{display:flex;justify-content:space-between;align-items:center;gap:18px;ma
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
 .keyboard,.guide-panel{padding:14px;position:static;top:auto;height:100%;min-height:0;max-height:none;overflow:hidden}.guide-panel{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding:0;border:0;box-shadow:none;opacity:0;visibility:hidden;transform:translateX(22px);transition:opacity .18s ease,transform .18s ease,padding .18s ease,border .18s ease,visibility 0s linear .2s;pointer-events:none}.guide-open .guide-panel{padding:14px;border:1px solid var(--line);box-shadow:var(--shadow);opacity:1;visibility:visible;transform:translateX(0);transition-delay:0s;pointer-events:auto}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
 .keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
-.si-workflow{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:4px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.si-slot>label{white-space:nowrap;font-size:13px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:26px}.slot-head label{white-space:nowrap}.slot-head .fontpick{font-size:12px;flex:0 0 auto;margin-left:auto}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{height:clamp(105px,15vh,140px);min-height:92px;font-size:18px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.3;min-height:0}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}.guide-panel h2{margin:0;font-size:15px}.guide-panel .guide-intro{margin:2px 0 8px;color:var(--muted);font-size:12px}.guide-scroll{flex:1;min-height:0;max-height:none;overflow-y:auto;overflow-x:hidden;direction:rtl;scrollbar-gutter:stable;padding-left:5px}.guide-content{direction:ltr}.guide-section{border-top:1px solid var(--line);padding:8px 0}.guide-section h3{margin:0 0 7px;font-size:13px}.guide-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;direction:ltr}.guide-cell{min-width:0;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:#fbfcff;padding:6px 2px;text-align:center}.guide-cell strong{font-size:20px;line-height:1.2;font-weight:500}.guide-cell code{display:block;margin-top:4px;font:700 12px/1.25 ui-monospace,monospace;letter-spacing:.1px;color:#2449bd;white-space:nowrap}.guide-panel .panel-title{margin-bottom:3px}.reference-hidden{display:none!important}.edge-tab{position:static;top:auto;z-index:2;align-self:start;margin-top:12px;min-height:126px;width:34px;padding:9px 6px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font-weight:700;box-shadow:var(--shadow);writing-mode:vertical-rl;cursor:pointer}.edge-tab:hover{background:var(--blue-soft);border-color:#91aaf9}.edge-tab.left-tab{justify-self:start;border-radius:0 9px 9px 0}.edge-tab.right-tab{justify-self:end;border-radius:9px 0 0 9px}@media(max-width:1000px){.workspace,.workspace:not(.keyboard-closed),.workspace.keyboard-closed.guide-open,.workspace:not(.keyboard-closed).guide-open{grid-template-columns:minmax(0,1fr)!important}.keyboard{grid-column:1!important;position:static;max-height:260px}.content{grid-column:1!important}.guide-panel{grid-column:1!important;position:static;max-height:none}.guide-scroll{max-height:320px}.edge-tab{position:static;top:auto;min-height:112px;z-index:2;margin:0 auto}.edge-tab.left-tab{left:auto;grid-column:1!important}.edge-tab.right-tab{right:auto;grid-column:1!important}.si-workflow{grid-template-columns:1fr;gap:9px}.si-slot textarea,.legacy-output{height:clamp(100px,14vh,125px);min-height:90px}.guide-open .guide-panel{transform:none}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.si-workflow{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:4px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.si-slot>label{white-space:nowrap;font-size:13px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:26px}.slot-head label{white-space:nowrap}.slot-head .fontpick{font-size:12px;flex:0 0 auto;margin-left:auto}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea,.legacy-output{height:clamp(105px,15vh,140px);min-height:92px;font-size:18px}.legacy-output{width:100%;resize:vertical;overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.si-slot small{color:var(--muted);font-size:11px;line-height:1.3;min-height:0}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}.guide-panel h2{margin:0;font-size:15px}.guide-panel .guide-intro{margin:2px 0 8px;color:var(--muted);font-size:12px}.guide-scroll{flex:1;min-height:0;max-height:none;overflow-y:auto;overflow-x:hidden;direction:rtl;scrollbar-gutter:stable;padding-left:5px}.guide-content{direction:ltr}.guide-section{border-top:1px solid var(--line);padding:8px 0}.guide-section h3{margin:0 0 7px;font-size:13px}.guide-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;direction:ltr}.guide-cell{min-width:0;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:7px;background:#fbfcff;padding:6px 2px;text-align:center}.guide-cell strong{font-size:20px;line-height:1.2;font-weight:500}.guide-cell code{display:block;margin-top:4px;font:700 12px/1.25 ui-monospace,monospace;letter-spacing:.1px;color:#2449bd;white-space:nowrap}.guide-panel .panel-title{margin-bottom:3px}.reference-hidden{display:none!important}.edge-tab{position:static;top:auto;z-index:2;align-self:start;margin-top:12px;min-height:126px;width:34px;padding:9px 6px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font-weight:700;box-shadow:var(--shadow);writing-mode:vertical-rl;cursor:pointer}.edge-tab:hover{background:var(--blue-soft);border-color:#91aaf9}.edge-tab.left-tab{justify-self:start;border-radius:0 9px 9px 0}.edge-tab.right-tab{justify-self:end;align-self:start;margin-top:12px;border-radius:9px 0 0 9px}@media(max-width:1000px){.workspace,.workspace:not(.keyboard-closed),.workspace.keyboard-closed.guide-open,.workspace:not(.keyboard-closed).guide-open{grid-template-columns:minmax(0,1fr)!important}.keyboard{grid-column:1!important;position:static;max-height:260px}.content{grid-column:1!important}.guide-panel{grid-column:1!important;position:static;max-height:none}.guide-scroll{max-height:320px}.edge-tab{position:static;top:auto;min-height:112px;z-index:2;margin:0 auto}.edge-tab.left-tab{left:auto;grid-column:1!important}.edge-tab.right-tab{right:auto;grid-column:1!important}.si-workflow{grid-template-columns:1fr;gap:9px}.si-slot textarea,.legacy-output{height:clamp(100px,14vh,125px);min-height:90px}.guide-open .guide-panel{transform:none}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
 .langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
-textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
+textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.list-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:5px}.list-toggle[aria-pressed="true"]{background:var(--blue-soft);border-color:#aebfff;color:#2149cb}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
 @media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
 @media(max-width:480px){.tabs{gap:4px}.tab{padding:8px 9px;font-size:13px}.langbar{align-items:flex-start;flex-direction:column}.fontpick{width:100%}.fontpick select{max-width:none;flex:1}.slot-head .fontpick span{display:none}.slot-head .fontpick select{max-width:170px}textarea{min-height:190px}.editor-tools{align-items:flex-start;flex-direction:column}}
 @media print{body{background:white}.shell{max-width:none;padding:0}.brand,.keyboard,.tabs,.fontpick,.editor-tools,.actions,.preview-head{display:none!important}.workspace{display:block}.panel{border:0;box-shadow:none;padding:0}.editor{padding:0}textarea{display:none}.preview{display:block!important;border:0;padding:0;margin:0}.preview-text{font-size:14pt;line-height:1.7}}
@@ -47,17 +47,17 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
         <button class="tab" role="tab" id="tab-en" aria-selected="false" aria-controls="editor-en" data-lang="en"><span class="dot"></span>English</button>
       </div>
             <div class="si-workflow" id="sinhala-workflow" aria-label="Sinhala typing, Unicode, and FM output">
-        <div class="si-slot"><label for="singlish-si">සිංහල පාඨය — ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small></div>
-        <div class="si-slot"><div class="slot-head"><label for="editor-si">යුනිකෝඩ් සිංහල</label><div class="fontpick"><span>යුනිකෝඩ් අකුරු</span><select id="font-si" aria-label="Sinhala Unicode font"></select></div></div><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය තෝරාගත් FM අකුරු රටාවට පරිවර්තනය වේ</small></div>
+        <div class="si-slot"><label for="singlish-si">සිංහල පාඨය — ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small><div class="list-tools" role="toolbar" aria-label="ලැයිස්තු ආකෘතිකරණය"><button class="btn list-toggle" type="button" data-list="bullet" aria-pressed="false">• බුලට්</button><button class="btn list-toggle" type="button" data-list="number" aria-pressed="false">අංකනය</button></div></div>
+        <div class="si-slot"><div class="slot-head"><label for="editor-si">යුනිකෝඩ් සිංහල</label><div class="fontpick"><span>යුනිකෝඩ් අකුරු</span><select id="font-si" aria-label="Sinhala Unicode font"></select></div></div><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය තෝරාගත් FM අකුරු රටාවට පරිවර්තනය වේ</small><div class="list-tools" role="toolbar" aria-label="ලැයිස්තු ආකෘතිකරණය"><button class="btn list-toggle" type="button" data-list="bullet" aria-pressed="false">• බුලට්</button><button class="btn list-toggle" type="button" data-list="number" aria-pressed="false">අංකනය</button></div></div>
         <div class="si-slot"><div class="slot-head"><label for="fm-si">Legacy output</label><div class="fontpick"><span>FM font</span><select id="legacy-font-si" aria-label="Sinhala FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><div id="fm-si" class="legacy-output" lang="si" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>Sinhala and Tamil become legacy codes; English stays unchanged.</small><button class="btn copy-fm" id="copyFm">Copy legacy output</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="ta" aria-label="தமிழ் தட்டச்சு பகுதி">
-        <div class="si-slot"><label for="editor-ta">தமிழ் உரை — தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>ஆங்கில எழுத்துகளில் தட்டச்சு செய்தால் தமிழ் எழுத்துகளாக மாறும்; ஆவணம் தொடர்ந்து இருக்கும்</small></div>
+        <div class="si-slot"><label for="editor-ta">தமிழ் உரை — தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>ஆங்கில எழுத்துகளில் தட்டச்சு செய்தால் தமிழ் எழுத்துகளாக மாறும்; ஆவணம் தொடர்ந்து இருக்கும்</small><div class="list-tools" role="toolbar" aria-label="பட்டியல் வடிவமைப்பு"><button class="btn list-toggle" type="button" data-list="bullet" aria-pressed="false">• புள்ளிகள்</button><button class="btn list-toggle" type="button" data-list="number" aria-pressed="false">எண்ணிடுதல்</button></div></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><div class="fontpick"><span>யுனிகோடு எழுத்துரு</span><select id="font-ta" aria-label="Tamil Unicode font"></select></div></div><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
         <div class="si-slot"><div class="slot-head"><label for="legacy-ta">தமிழ் மரபு / legacy output</label><div class="fontpick"><span>தமிழ் எழுத்துரு</span><select id="legacy-font-ta" aria-label="Tamil legacy font"><option>Bamini 12</option><option>Bamini 01</option><option>Bamini 02</option><option>Bamini 03</option><option>Bamini 04</option></select></div></div><div id="legacy-ta" class="legacy-output" lang="ta" role="textbox" aria-readonly="true" aria-label="Mixed Sinhala FM, Tamil legacy, and English output"></div><small>தமிழ் மற்றும் சிங்களம் மரபு குறியீடுகளாக மாறும்; ஆங்கிலம் மாறாது. Word கோப்பில் எழுத்துருக்கள் தனித்தனியாக அமைக்கப்படும்.</small><button class="btn copy-legacy">மரபு உரையை நகலெடுக்கவும்</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="en" aria-label="English typing area">
-        <div class="si-slot"><label for="editor-en">English text — typing area</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
+        <div class="si-slot"><label for="editor-en">English text — typing area</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small><div class="list-tools" role="toolbar" aria-label="List formatting"><button class="btn list-toggle" type="button" data-list="bullet" aria-pressed="false">• Bullets</button><button class="btn list-toggle" type="button" data-list="number" aria-pressed="false">Numbering</button></div></div>
         <div class="si-slot"><div class="slot-head"><label for="unicode-en">Unicode document</label><div class="fontpick"><span>Unicode font</span><select id="font-en" aria-label="English Unicode font"></select></div></div><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
         <div class="si-slot"><div class="slot-head"><label for="render-en">Legacy output preview</label><div class="fontpick"><span>FM font</span><select id="legacy-font-en" aria-label="English tab FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><div id="render-en" class="legacy-output" lang="en" role="textbox" aria-readonly="true" aria-label="Mixed legacy output"></div><small>All scripts use their selected legacy fonts in the Word export.</small><button class="btn copy-legacy">Copy legacy output</button></div>
       </div>
@@ -194,6 +194,125 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     syncMirrors();syncFmOutput();if(active===lang)updateCount();
   }
   function syncDocumentFromEditor(lang){syncDocumentFromSource(editors[lang],lang)}
+  const editableInputs=[singlishInput,...Object.values(editors)];
+  const bulletMarks=["•","◦","▪"];
+  function activeLine(el){
+    const value=el.value,start=el.selectionStart??value.length;
+    const lineStart=value.lastIndexOf("\n",Math.max(0,start-1))+1;
+    const nextBreak=value.indexOf("\n",start);
+    const lineEnd=nextBreak<0?value.length:nextBreak;
+    return {value,start,lineStart,lineEnd,line:value.slice(lineStart,lineEnd)};
+  }
+  function parseListLine(line){
+    const bullet=line.match(/^([•◦▪])\s/);
+    if(bullet)return {kind:"bullet",level:bulletMarks.indexOf(bullet[1]),marker:bullet[0]};
+    const number=line.match(/^(\d+(?:\.\d+){0,2})\.\s/);
+    if(number){const segments=number[1].split(".").map(Number);return {kind:"number",level:segments.length-1,segments,marker:number[0]}}
+    return null;
+  }
+  function numberedMarker(segments){return segments.join(".")+". "}
+  function markerFor(kind,level,segments){
+    return kind==="bullet"?bulletMarks[Math.max(0,Math.min(2,level))]+" ":numberedMarker(segments||Array(level+1).fill(1))
+  }
+  function replaceText(el,start,end,text,caret=start+text.length){
+    el.setRangeText(text,start,end,"preserve");
+    el.setSelectionRange(caret,caret);
+    if(el===singlishInput)sinhalaComposition=null;
+    el.dispatchEvent(new Event("input",{bubbles:true}));
+    el.focus();
+    el.setSelectionRange(caret,caret);
+  }
+  function toolbarFor(el){return el.closest(".si-slot")?.querySelector(".list-tools")}
+  function refreshListToolbar(el){
+    const toolbar=toolbarFor(el);if(!toolbar)return;
+    const {line}=activeLine(el),info=parseListLine(line);
+    toolbar.querySelectorAll(".list-toggle").forEach(button=>{
+      const pressed=!!info&&info.kind===button.dataset.list;
+      button.setAttribute("aria-pressed",String(pressed));
+    });
+  }
+  function toggleList(el,kind){
+    const {line,lineStart}=activeLine(el),info=parseListLine(line);
+    if(info&&info.kind===kind){
+      replaceText(el,lineStart,lineStart+info.marker.length,"",lineStart);
+    }else{
+      const marker=kind==="bullet"?"• ":"1. ";
+      const end=info?lineStart+info.marker.length:lineStart;
+      replaceText(el,lineStart,end,marker,lineStart+marker.length);
+    }
+    refreshListToolbar(el);
+  }
+  function changeListLevel(el,direction){
+    const {line,lineStart}=activeLine(el),info=parseListLine(line);
+    if(!info)return false;
+    let next;
+    if(info.kind==="bullet"){
+      const level=Math.max(0,Math.min(2,info.level+direction));
+      if(level===info.level)return true;
+      next=markerFor("bullet",level);
+    }else{
+      const segments=[...info.segments];
+      if(direction>0){
+        if(segments.length>=3)return true;
+        segments.push(1);
+      }else{
+        if(segments.length===1)return true;
+        segments.pop();
+        segments[segments.length-1]=(segments[segments.length-1]||1)+1;
+      }
+      next=numberedMarker(segments);
+    }
+    replaceText(el,lineStart,lineStart+info.marker.length,next,lineStart+next.length);
+    refreshListToolbar(el);
+    return true;
+  }
+  function continueList(el,event){
+    const {start,lineStart,line}=activeLine(el),info=parseListLine(line);
+    if(!info)return false;
+    const body=line.slice(info.marker.length);
+    event.preventDefault();
+    if(!body.trim()){
+      replaceText(el,lineStart,lineStart+info.marker.length,"",lineStart);
+      refreshListToolbar(el);
+      return true;
+    }
+    let nextMarker;
+    if(info.kind==="bullet")nextMarker=markerFor("bullet",info.level);
+    else{
+      const segments=[...info.segments];segments[segments.length-1]=(segments[segments.length-1]||0)+1;
+      nextMarker=numberedMarker(segments);
+    }
+    replaceText(el,start,start,"\n"+nextMarker,start+1+nextMarker.length);
+    refreshListToolbar(el);
+    return true;
+  }
+  function handleIndent(el,event){
+    const {start,lineStart,line}=activeLine(el),info=parseListLine(line);
+    if(info){
+      event.preventDefault();
+      changeListLevel(el,event.shiftKey?-1:1);
+      return;
+    }
+    event.preventDefault();
+    if(event.shiftKey){
+      const before=el.value.slice(lineStart,start);
+      const whitespace=before.match(/(?:\t| {1,4})$/);
+      if(whitespace)replaceText(el,start-whitespace[0].length,start,"",start-whitespace[0].length);
+    }else replaceText(el,start,el.selectionEnd??start,"    ",start+4);
+  }
+  editableInputs.forEach(el=>{
+    el.addEventListener("keydown",event=>{
+      if(event.key==="Tab"){handleIndent(el,event);return}
+      if(event.key==="Enter")continueList(el,event);
+    });
+    ["input","keyup","click","select","focus"].forEach(name=>el.addEventListener(name,()=>refreshListToolbar(el)));
+  });
+  document.querySelectorAll(".list-tools").forEach(toolbar=>{
+    toolbar.querySelectorAll(".list-toggle").forEach(button=>button.addEventListener("click",()=>{
+      const target=toolbar.closest(".si-slot")?.querySelector("textarea");
+      if(target)toggleList(target,button.dataset.list);
+    }));
+  });
   function typeSinhalaKey(key){
     const el=singlishInput,start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     if(sinhalaComposition&&(start!==sinhalaComposition.start+sinhalaComposition.output.length||start!==end))sinhalaComposition=null;
