@@ -51,8 +51,16 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
         <div class="si-slot"><label for="editor-si">යුනිකෝඩ් සිංහල</label><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය FM වෙත පරිවර්තනය වේ</small></div>
         <div class="si-slot"><label for="fm-si">FM Bindumathi</label><textarea id="fm-si" lang="si" spellcheck="false" readonly aria-label="FM Bindumathi converted text"></textarea><button class="btn copy-fm" id="copyFm">FM පාඨය පිටපත් කරන්න</button></div>
       </div>
-      <textarea id="editor-ta" class="hidden" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும் அல்லது எழுத்து பொத்தான்களைப் பயன்படுத்தவும்…"></textarea>
-      <textarea id="editor-en" class="hidden" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here or use the keyboard buttons…"></textarea>
+      <div class="si-workflow other-workflow hidden" data-workflow="ta" aria-label="தமிழ் தட்டச்சு பகுதி">
+        <div class="si-slot"><label for="editor-ta">தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>மொழியை மாற்றினாலும் உங்கள் ஆவணம் தொடரும்</small></div>
+        <div class="si-slot"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
+        <div class="si-slot"><label for="render-ta">தமிழ் எழுத்துரு முன்னோட்டம்</label><textarea id="render-ta" lang="ta" readonly aria-label="தமிழ் எழுத்துரு முன்னோட்டம்"></textarea><small>தேர்ந்தெடுத்த தமிழ் எழுத்துருவில் முன்னோட்டம்</small></div>
+      </div>
+      <div class="si-workflow other-workflow hidden" data-workflow="en" aria-label="English typing area">
+        <div class="si-slot"><label for="editor-en">English typing</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
+        <div class="si-slot"><label for="unicode-en">Unicode document</label><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
+        <div class="si-slot"><label for="render-en">English font preview</label><textarea id="render-en" lang="en" readonly aria-label="English font preview"></textarea><small>Preview in the selected English font.</small></div>
+      </div>
       <div class="langbar hidden" id="fontbar-ta"><label for="font-ta">Tamil text</label><div class="fontpick"><span>Font</span><select id="font-ta" aria-label="Tamil font"></select></div></div>
       <div class="langbar hidden" id="fontbar-en"><label for="font-en">English text</label><div class="fontpick"><span>Font</span><select id="font-en" aria-label="English font"></select></div></div>
       <div class="editor-tools"><span id="count">0 characters</span><button class="btn" id="copyCurrent">Copy this language</button></div>
@@ -87,8 +95,12 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       ["Georgia", 'Georgia, serif'], ["Verdana", 'Verdana, sans-serif'], ["Calibri", 'Calibri, sans-serif']
     ]
   };
-  const language = {si:{name:"Sinhala",label:"Sinhala text",tag:"si"},ta:{name:"Tamil",label:"Tamil text",tag:"ta"},en:{name:"English",label:"English text",tag:"en"}};
+  const language = {si:{name:"සිංහල",label:"සිංහල පාඨය",tag:"si"},ta:{name:"தமிழ்",label:"தமிழ் உரை",tag:"ta"},en:{name:"English",label:"English text",tag:"en"}};
   const values = {si:"",ta:"",en:""};
+  let documentText = "";
+  let savedCursor = 0;
+  let sourceDocStart = null;
+  let previousSinhalaText = "";
   let active = "si";
   const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
   const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
@@ -98,9 +110,15 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function notify(message){const el=document.querySelector("#status");el.textContent=message;el.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.classList.remove("show"),2100)}
   for(const lang of labels){
     fonts[lang].forEach(([name,stack],i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;fontSelects[lang].append(o)});
-    fontSelects[lang].addEventListener("change",()=>{editors[lang].style.fontFamily=fonts[lang][fontSelects[lang].value][1];renderPreview()});
+    fontSelects[lang].addEventListener("change",()=>{editors[lang].style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();renderPreview()});
     editors[lang].style.fontFamily=fonts[lang][0][1];
-    editors[lang].addEventListener("input",()=>{values[lang]=editors[lang].value;if(lang==="si")syncFmOutput();renderPreview();if(active===lang)updateCount()});
+    editors[lang].addEventListener("input",()=>{
+      documentText=editors[lang].value;
+      savedCursor=editors[lang].selectionStart??documentText.length;
+      labels.forEach(key=>{values[key]=documentText;if(key!==lang)editors[key].value=documentText});
+      if(lang==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
+      syncMirrors();syncFmOutput();renderPreview();if(active===lang)updateCount()
+    });
   }
   const keys = {
     si:[
@@ -123,36 +141,60 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   };
   function buildKeyboard(){
     const grid=document.querySelector("#keygrid");grid.replaceChildren();
-    document.querySelector("#keyboardTitle").textContent=language[active].name+" keyboard";
-    document.querySelector("#keyboardHint").textContent=active==="en"?"Click a key to insert it at the cursor. | is a normal text character.":"Click a character to insert it at the cursor. | is a normal text character.";
+    document.querySelector("#keyboardTitle").textContent=active==="si"?"සිංහල යතුරු පුවරුව":active==="ta"?"தமிழ் விசைப்பலகை":"English keyboard";
+    document.querySelector("#keyboardHint").textContent=active==="si"?"අකුරක් ඇතුළත් කිරීමට එය ඔබන්න. | සාමාන්‍ය අකුරක් ලෙස ඇතුළත් වේ.":active==="ta"?"எழுத்தைச் சேர்க்க அதை அழுத்தவும். | சாதாரண குறியாகச் சேர்க்கப்படும்.":"Click a key to insert it. | is a normal text character.";
+    document.querySelector("#clearCurrent").textContent=active==="si"?"මකන්න":active==="ta"?"அழி":"Clear";
     keys[active].forEach(([glyph,insert])=>{const b=document.createElement("button");b.type="button";b.className="key";b.textContent=glyph;b.setAttribute("aria-label","Insert "+glyph);b.addEventListener("click",()=>insertAtCursor(insert));grid.append(b)});
   }
   function insertAtCursor(text){
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
-    el.setRangeText(text,start,end,"end");values[active]=el.value;if(active==="si")syncFmOutput();el.focus();renderPreview();updateCount();
+    el.setRangeText(text,start,end,"end");documentText=el.value;savedCursor=el.selectionStart??documentText.length;
+    labels.forEach(key=>{values[key]=documentText;if(key!==active)editors[key].value=documentText});
+    if(active==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
+    syncMirrors();syncFmOutput();el.focus();renderPreview();updateCount();
   }
   document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
-    values[active]=editors[active].value;active=tab.dataset.lang;
+    const next=tab.dataset.lang;
+    savedCursor=editors[active].selectionStart??savedCursor;
+    if(active==="si"&&next!=="si"){singlishInput.value="";sourceDocStart=null;previousSinhalaText=""}
+    active=next;editors[active].value=documentText;
     document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
-    labels.forEach(lang=>editors[lang].classList.toggle("hidden",lang!==active));
     document.querySelector("#sinhala-workflow").classList.toggle("hidden",active!=="si");
+    document.querySelectorAll(".other-workflow").forEach(w=>w.classList.toggle("hidden",w.dataset.workflow!==active));
     document.querySelector("#editorLabel").textContent=language[active].label;
     document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
     document.querySelector("#fontbar-ta").classList.toggle("hidden",active!=="ta");
     document.querySelector("#fontbar-en").classList.toggle("hidden",active!=="en");
     document.querySelector("#font-si").closest(".langbar").classList.toggle("hidden",active!=="si");
-    buildKeyboard();updateCount();editors[active].focus();
+    syncMirrors();buildKeyboard();updateCount();editors[active].focus();editors[active].setSelectionRange(savedCursor,savedCursor);
   }));
   document.querySelectorAll("[data-insert]").forEach(b=>b.addEventListener("click",()=>insertAtCursor(b.dataset.insert)));
   document.querySelectorAll("[data-action=backspace]").forEach(b=>b.addEventListener("click",()=>{
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     if(start===end&&start>0)el.setSelectionRange(start-1,end);
-    el.setRangeText("",el.selectionStart,el.selectionEnd,"end");values[active]=el.value;el.focus();renderPreview();updateCount();
+    el.setRangeText("",el.selectionStart,el.selectionEnd,"end");documentText=el.value;savedCursor=el.selectionStart??documentText.length;
+    labels.forEach(key=>{values[key]=documentText;if(key!==active)editors[key].value=documentText});
+    if(active==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
+    syncMirrors();syncFmOutput();el.focus();renderPreview();updateCount();
   }));
-  document.querySelector("#clearCurrent").addEventListener("click",()=>{editors[active].value="";values[active]="";if(active==="si"){singlishInput.value="";syncFmOutput()}renderPreview();updateCount();editors[active].focus()});
-  singlishInput.addEventListener("input",()=>{editors.si.value=transliterateSinhlish(singlishInput.value);values.si=editors.si.value;syncFmOutput();renderPreview();if(active==="si")updateCount()});
+  document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";sourceDocStart=null;previousSinhalaText="";syncMirrors();syncFmOutput();renderPreview();updateCount();editors[active].focus()});
+  singlishInput.addEventListener("input",()=>{
+    if(sourceDocStart===null)sourceDocStart=Math.min(savedCursor,documentText.length);
+    const replacement=transliterateSinhlish(singlishInput.value);
+    documentText=documentText.slice(0,sourceDocStart)+replacement+documentText.slice(sourceDocStart+previousSinhalaText.length);
+    previousSinhalaText=replacement;savedCursor=sourceDocStart+replacement.length;
+    labels.forEach(key=>{values[key]=documentText;editors[key].value=documentText});
+    editors.si.setSelectionRange(savedCursor,savedCursor);syncMirrors();syncFmOutput();renderPreview();if(active==="si")updateCount()
+  });
   document.querySelector("#copyFm").addEventListener("click",()=>copy(fmOutput.value));
-  function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(editors.si.value);}
+  function syncMirrors(){
+    for(const lang of ["ta","en"]){
+      const unicode=document.querySelector("#unicode-"+lang),rendered=document.querySelector("#render-"+lang);
+      unicode.value=documentText;rendered.value=documentText;
+      rendered.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
+    }
+  }
+  function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(documentText);}
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
     if(/[\u0D80-\u0DFF]/.test(input)) return input;
@@ -173,25 +215,37 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     for(const [a,b] of [...special,...Object.entries(base),...Object.entries(chars)])t=t.split(a).join(b);
     return t;
   }
+  function textRuns(text){
+    const runs=[];let current=null;
+    for(const char of text){
+      const cp=char.codePointAt(0),lang=cp>=0x0D80&&cp<=0x0DFF?"si":cp>=0x0B80&&cp<=0x0BFF?"ta":"en";
+      if(!current||current.lang!==lang){current={lang,text:""};runs.push(current)}
+      current.text+=char;
+    }
+    return runs;
+  }
   function renderPreview(){
     const preview=document.querySelector("#preview");preview.replaceChildren();
-    labels.forEach(lang=>{if(!values[lang])return;const span=document.createElement("span");span.className="preview-part";span.lang=language[lang].tag;span.style.fontFamily=fonts[lang][fontSelects[lang].value][1];span.textContent=values[lang];preview.append(span)});
-    if(fmOutput.value){const span=document.createElement("span");span.className="preview-part";span.lang="si";span.style.fontFamily='"FM Bindumathi",serif';span.textContent=fmOutput.value;preview.append(span)}
+    for(const run of textRuns(documentText)){
+      const span=document.createElement("span");span.className="preview-part";span.lang=language[run.lang].tag;
+      span.style.fontFamily=fonts[run.lang][fontSelects[run.lang].value][1];span.textContent=run.text;preview.append(span);
+    }
   }
-  function fullText(){return labels.filter(x=>values[x]).map(x=>values[x]).join("\n\n")}
+  function fullText(){return documentText}
   async function copy(text){if(!text){notify("There is no text to copy yet.");return}try{await navigator.clipboard.writeText(text);notify("Copied to clipboard.")}catch(e){const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify("Copied to clipboard.")}}
   document.querySelector("#copyAll").addEventListener("click",()=>copy(fullText()));
-  document.querySelector("#copyCurrent").addEventListener("click",()=>copy(editors[active].value));
+  document.querySelector("#copyCurrent").addEventListener("click",()=>copy(fullText()));
   function download(name,mime,text){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
   document.querySelector("#saveTxt").addEventListener("click",()=>download("triscript-document.txt","text/plain;charset=utf-8",fullText()));
   document.querySelector("#saveDoc").addEventListener("click",()=>{
-    const body=labels.filter(x=>values[x]).map(lang=>'<p lang="'+language[lang].tag+'" style="font-family:'+escapeHtml(fonts[lang][fontSelects[lang].value][1])+';white-space:pre-wrap;line-height:1.7">'+escapeHtml(values[lang])+"</p>").join("\n")+(fmOutput.value?'<p lang="si" style="font-family:FM Bindumathi,serif;white-space:pre-wrap;line-height:1.7">'+escapeHtml(fmOutput.value)+'</p>':"");
+    const spans=textRuns(documentText).map(run=>'<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(fonts[run.lang][fontSelects[run.lang].value][1])+'">'+escapeHtml(run.text)+'</span>').join("");
+    const body='<p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(fmOutput.value?'<p lang="si" style="font-family:FM Bindumathi,serif;white-space:pre-wrap;line-height:1.7">'+escapeHtml(fmOutput.value)+'</p>':"");
     const doc='<!doctype html><html><head><meta charset="utf-8"><title>TriScript document</title></head><body>'+body+"</body></html>";
     download("triscript-document.doc",'application/msword;charset=utf-8',doc);
   });
   function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
   document.querySelector("#savePdf").addEventListener("click",()=>{if(!fullText()){notify("Type some text before exporting.");return}window.print()});
-  buildKeyboard();renderPreview();updateCount();
+  syncMirrors();buildKeyboard();renderPreview();updateCount();
 })();
 </script>
 </body>
