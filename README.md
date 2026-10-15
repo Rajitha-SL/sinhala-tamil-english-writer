@@ -21,7 +21,9 @@ The app stores and copies text as Unicode. Font selection changes the display an
 
 ## Input notes
 
-The clickable keyboards insert Unicode characters directly. Physical-keyboard typing in Sinhala or Tamil depends on a Sinhala or Tamil input method enabled in your operating system. This starter does not convert Singlish/Tanglish romanized typing or encode text for legacy FM Bindumathi/Bamini fonts.
+The Sinhala tab has three linked spaces: Singlish/Sinhala typing, editable Sinhala Unicode, and FM Bindumathi legacy output. Typing Singlish in the first space fills the Unicode and FM spaces; typing or pasting Unicode into the second space refreshes the FM output. Use **FM පාඨය පිටපත් කරන්න** to copy the legacy text for a document that uses FM Bindumathi. The Word export and print preview include the converted FM text as well as Unicode text.
+
+The Sinhala transliteration and legacy conversion run in the browser. The FM result is legacy encoded, so it needs the FM Bindumathi font installed in the application where you paste it. Tamil and English tabs remain Unicode text entry; Tamil physical-keyboard typing uses a Tamil input method enabled in your operating system. The Tamil click keyboard inserts Unicode characters.
 
 ## GitHub Pages
 
