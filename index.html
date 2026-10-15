@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f7fb">
+<title>TriScript Writer — Sinhala, Tamil & English</title>
+<style>
+:root{color-scheme:light;--ink:#172033;--muted:#64748b;--line:#dce4ef;--blue:#315ee8;--blue-soft:#edf2ff;--paper:#fff;--bg:#f4f7fb;--shadow:0 8px 28px #15264b0d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+button,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:0 auto;padding:28px 26px 40px}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#172c59;color:#fff;font-size:18px;font-weight:800;letter-spacing:-2px}.brand h1{font-size:21px;line-height:1.2;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:9px 13px;font-weight:650}.btn:hover{border-color:#9fb1d2;background:#f9fbff}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#244bd0}
+.workspace{display:grid;grid-template-columns:minmax(245px,300px) minmax(0,1fr);gap:18px;align-items:start}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+.keyboard{padding:17px;position:sticky;top:15px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
+.keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
+.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
+textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:inline}.preview-part+.preview-part{margin-left:.28em}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
+@media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
+@media(max-width:480px){.tabs{gap:4px}.tab{padding:8px 9px;font-size:13px}.langbar{align-items:flex-start;flex-direction:column}.fontpick{width:100%}.fontpick select{max-width:none;flex:1}textarea{min-height:190px}.editor-tools{align-items:flex-start;flex-direction:column}}
+@media print{body{background:white}.shell{max-width:none;padding:0}.brand,.keyboard,.tabs,.fontpick,.editor-tools,.actions,.preview-head{display:none!important}.workspace{display:block}.panel{border:0;box-shadow:none;padding:0}.editor{padding:0}textarea{display:none}.preview{display:block!important;border:0;padding:0;margin:0}.preview-text{font-size:14pt;line-height:1.7}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+  <div class="brand"><div class="mark" aria-hidden="true">සි</div><div><h1>TriScript Writer</h1><p>Type and format Sinhala, Tamil, and English in one place.</p></div></div>
+  <div class="actions" aria-label="Export actions">
+    <button class="btn" id="copyAll">Copy all</button><button class="btn" id="saveTxt">Download TXT</button><button class="btn" id="saveDoc">Download Word</button><button class="btn primary" id="savePdf">Print / Save PDF</button>
+  </div>
+</header>
+<div class="workspace">
+  <aside class="panel keyboard" aria-label="Clickable keyboard">
+    <div class="panel-title"><h2 id="keyboardTitle">Sinhala keyboard</h2><button class="btn" id="clearCurrent" title="Clear the selected language">Clear</button></div>
+    <p class="hint" id="keyboardHint">Click a character to insert it at the cursor.</p>
+    <div class="keygrid" id="keygrid"></div>
+    <div class="keyboard-footer"><button class="key utility" data-insert="|">|</button><button class="key utility" data-insert=" ">Space</button><button class="key utility" data-action="backspace">⌫</button></div>
+  </aside>
+  <main class="content">
+    <section class="panel editor" aria-label="Writing area">
+      <div class="tabs" role="tablist" aria-label="Writing language">
+        <button class="tab" role="tab" id="tab-si" aria-selected="true" aria-controls="editor-si" data-lang="si"><span class="dot"></span>සිංහල</button>
+        <button class="tab" role="tab" id="tab-ta" aria-selected="false" aria-controls="editor-ta" data-lang="ta"><span class="dot"></span>தமிழ்</button>
+        <button class="tab" role="tab" id="tab-en" aria-selected="false" aria-controls="editor-en" data-lang="en"><span class="dot"></span>English</button>
+      </div>
+      <div class="langbar"><label id="editorLabel" for="editor-si">Sinhala text</label><div class="fontpick"><span>Font</span><select id="font-si" aria-label="Sinhala font"></select></div></div>
+      <textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="Type Sinhala here or use the character buttons…"></textarea>
+      <textarea id="editor-ta" class="hidden" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும் அல்லது எழுத்து பொத்தான்களைப் பயன்படுத்தவும்…"></textarea>
+      <textarea id="editor-en" class="hidden" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here or use the keyboard buttons…"></textarea>
+      <div class="langbar hidden" id="fontbar-ta"><label for="font-ta">Tamil text</label><div class="fontpick"><span>Font</span><select id="font-ta" aria-label="Tamil font"></select></div></div>
+      <div class="langbar hidden" id="fontbar-en"><label for="font-en">English text</label><div class="fontpick"><span>Font</span><select id="font-en" aria-label="English font"></select></div></div>
+      <div class="editor-tools"><span id="count">0 characters</span><button class="btn" id="copyCurrent">Copy this language</button></div>
+    </section>
+    <section class="panel preview" aria-label="Document preview">
+      <div class="preview-head"><h2>Document preview</h2><span class="hint" style="margin:0">Each section keeps its selected font.</span></div>
+      <div class="preview-text" id="preview"></div>
+    </section>
+  </main>
+</div>
+</div>
+<div class="status" id="status" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const fonts = {
+    si: [
+      ["Noto Sans Sinhala", '"Noto Sans Sinhala", sans-serif'],
+      ["Noto Serif Sinhala", '"Noto Serif Sinhala", serif'],
+      ["Iskoola Pota", '"Iskoola Pota", "Noto Serif Sinhala", serif'],
+      ["Malithi Web", '"Malithi Web", "Noto Sans Sinhala", sans-serif'],
+      ["Arial", 'Arial, "Noto Sans Sinhala", sans-serif']
+    ],
+    ta: [
+      ["Noto Sans Tamil", '"Noto Sans Tamil", sans-serif'],
+      ["Noto Serif Tamil", '"Noto Serif Tamil", serif'],
+      ["Latha", 'Latha, "Noto Sans Tamil", sans-serif'],
+      ["Vijaya", 'Vijaya, "Noto Sans Tamil", sans-serif'],
+      ["Arial", 'Arial, "Noto Sans Tamil", sans-serif']
+    ],
+    en: [
+      ["Arial", 'Arial, sans-serif'], ["Times New Roman", '"Times New Roman", serif'],
+      ["Georgia", 'Georgia, serif'], ["Verdana", 'Verdana, sans-serif'], ["Calibri", 'Calibri, sans-serif']
+    ]
+  };
+  const language = {si:{name:"Sinhala",label:"Sinhala text",tag:"si"},ta:{name:"Tamil",label:"Tamil text",tag:"ta"},en:{name:"English",label:"English text",tag:"en"}};
+  const values = {si:"",ta:"",en:""};
+  let active = "si";
+  const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
+  const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
+  const labels = ["si","ta","en"];
+  function notify(message){const el=document.querySelector("#status");el.textContent=message;el.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.classList.remove("show"),2100)}
+  for(const lang of labels){
+    fonts[lang].forEach(([name,stack],i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;fontSelects[lang].append(o)});
+    fontSelects[lang].addEventListener("change",()=>{editors[lang].style.fontFamily=fonts[lang][fontSelects[lang].value][1];renderPreview()});
+    editors[lang].style.fontFamily=fonts[lang][0][1];
+    editors[lang].addEventListener("input",()=>{values[lang]=editors[lang].value;renderPreview();if(active===lang)updateCount()});
+  }
+  const keys = {
+    si:[
+      ["අ","අ"],["ආ","ආ"],["ඇ","ඇ"],["ඈ","ඈ"],["ඉ","ඉ"],["ඊ","ඊ"],["උ","උ"],["ඌ","ඌ"],["එ","එ"],["ඒ","ඒ"],
+      ["ඔ","ඔ"],["ඕ","ඕ"],["ඓ","ඓ"],["ඖ","ඖ"],["ක","ක"],["ඛ","ඛ"],["ග","ග"],["ඝ","ඝ"],["ඞ","ඞ"],["ඟ","ඟ"],
+      ["ච","ච"],["ඡ","ඡ"],["ජ","ජ"],["ඣ","ඣ"],["ඤ","ඤ"],["ඥ","ඥ"],["ට","ට"],["ඨ","ඨ"],["ඩ","ඩ"],["ඪ","ඪ"],
+      ["ණ","ණ"],["ඬ","ඬ"],["ත","ත"],["ථ","ථ"],["ද","ද"],["ධ","ධ"],["න","න"],["ඳ","ඳ"],["ප","ප"],["ඵ","ඵ"],
+      ["බ","බ"],["භ","භ"],["ම","ම"],["ඹ","ඹ"],["ය","ය"],["ර","ර"],["ල","ල"],["ව","ව"],["ශ","ශ"],["ෂ","ෂ"],
+      ["ස","ස"],["හ","හ"],["ළ","ළ"],["ෆ","ෆ"],["ා","ා"],["ැ","ැ"],["ෑ","ෑ"],["ි","ි"],["ී","ී"],["ු","ු"],
+      ["ූ","ූ"],["ෘ","ෘ"],["්","්"],["ං","ං"],["ඃ","ඃ"],["ෟ","ෟ"],["ෳ","ෳ"],["।","।"],["ඟ","ඟ"],["ෆ","ෆ"]
+    ],
+    ta:[
+      ["அ","அ"],["ஆ","ஆ"],["இ","இ"],["ஈ","ஈ"],["உ","உ"],["ஊ","ஊ"],["எ","எ"],["ஏ","ஏ"],["ஐ","ஐ"],["ஒ","ஒ"],
+      ["ஓ","ஓ"],["ஔ","ஔ"],["ஃ","ஃ"],["க","க"],["ங","ங"],["ச","ச"],["ஞ","ஞ"],["ட","ட"],["ண","ண"],["த","த"],
+      ["ந","ந"],["ப","ப"],["ம","ம"],["ய","ய"],["ர","ர"],["ல","ல"],["வ","வ"],["ழ","ழ"],["ள","ள"],["ற","ற"],
+      ["ன","ன"],["ஜ","ஜ"],["ஷ","ஷ"],["ஸ","ஸ"],["ஹ","ஹ"],["ா","ா"],["ி","ி"],["ீ","ீ"],["ு","ு"],["ூ","ூ"],
+      ["ெ","ெ"],["ே","ே"],["ை","ை"],["ொ","ொ"],["ோ","ோ"],["ௌ","ௌ"],["்","்"],["ௐ","ௐ"],["ஸ்ரீ","ஸ்ரீ"],["ழ்","ழ்"]
+    ],
+    en:[..."1234567890".split("").map(x=>[x,x]),..."qwertyuiop".split("").map(x=>[x,x]),..."asdfghjkl".split("").map(x=>[x,x]),..."zxcvbnm".split("").map(x=>[x,x]),[",",","],[".","."],["?","?"],["!","!"],["'","'"],["-","-"],["(", "("],[")",")"]]
+  };
+  function buildKeyboard(){
+    const grid=document.querySelector("#keygrid");grid.replaceChildren();
+    document.querySelector("#keyboardTitle").textContent=language[active].name+" keyboard";
+    document.querySelector("#keyboardHint").textContent=active==="en"?"Click a key to insert it at the cursor. | is a normal text character.":"Click a character to insert it at the cursor. | is a normal text character.";
+    keys[active].forEach(([glyph,insert])=>{const b=document.createElement("button");b.type="button";b.className="key";b.textContent=glyph;b.setAttribute("aria-label","Insert "+glyph);b.addEventListener("click",()=>insertAtCursor(insert));grid.append(b)});
+  }
+  function insertAtCursor(text){
+    const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
+    el.setRangeText(text,start,end,"end");values[active]=el.value;el.focus();renderPreview();updateCount();
+  }
+  document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
+    values[active]=editors[active].value;active=tab.dataset.lang;
+    document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
+    labels.forEach(lang=>editors[lang].classList.toggle("hidden",lang!==active));
+    document.querySelector("#editorLabel").textContent=language[active].label;
+    document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
+    document.querySelector("#fontbar-ta").classList.toggle("hidden",active!=="ta");
+    document.querySelector("#fontbar-en").classList.toggle("hidden",active!=="en");
+    document.querySelector("#font-si").closest(".langbar").classList.toggle("hidden",active!=="si");
+    buildKeyboard();updateCount();editors[active].focus();
+  }));
+  document.querySelectorAll("[data-insert]").forEach(b=>b.addEventListener("click",()=>insertAtCursor(b.dataset.insert)));
+  document.querySelectorAll("[data-action=backspace]").forEach(b=>b.addEventListener("click",()=>{
+    const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
+    if(start===end&&start>0)el.setSelectionRange(start-1,end);
+    el.setRangeText("",el.selectionStart,el.selectionEnd,"end");values[active]=el.value;el.focus();renderPreview();updateCount();
+  }));
+  document.querySelector("#clearCurrent").addEventListener("click",()=>{editors[active].value="";values[active]="";renderPreview();updateCount();editors[active].focus()});
+  function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
+  function renderPreview(){
+    const preview=document.querySelector("#preview");preview.replaceChildren();
+    labels.forEach(lang=>{if(!values[lang])return;const span=document.createElement("span");span.className="preview-part";span.lang=language[lang].tag;span.style.fontFamily=fonts[lang][fontSelects[lang].value][1];span.textContent=values[lang];preview.append(span)});
+  }
+  function fullText(){return labels.filter(x=>values[x]).map(x=>values[x]).join("\n\n")}
+  async function copy(text){if(!text){notify("There is no text to copy yet.");return}try{await navigator.clipboard.writeText(text);notify("Copied to clipboard.")}catch(e){const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify("Copied to clipboard.")}}
+  document.querySelector("#copyAll").addEventListener("click",()=>copy(fullText()));
+  document.querySelector("#copyCurrent").addEventListener("click",()=>copy(editors[active].value));
+  function download(name,mime,text){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+  document.querySelector("#saveTxt").addEventListener("click",()=>download("triscript-document.txt","text/plain;charset=utf-8",fullText()));
+  document.querySelector("#saveDoc").addEventListener("click",()=>{
+    const body=labels.filter(x=>values[x]).map(lang=>'<p lang="'+language[lang].tag+'" style="font-family:'+fonts[lang][fontSelects[lang].value][1]+';white-space:pre-wrap;line-height:1.7">'+escapeHtml(values[lang])+"</p>").join("\n");
+    const doc='<!doctype html><html><head><meta charset="utf-8"><title>TriScript document</title></head><body>'+body+"</body></html>";
+    download("triscript-document.doc",'application/msword;charset=utf-8',doc);
+  });
+  function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+  document.querySelector("#savePdf").addEventListener("click",()=>{if(!fullText()){notify("Type some text before exporting.");return}window.print()});
+  buildKeyboard();renderPreview();updateCount();
+})();
+</script>
+</body>
+</html>
