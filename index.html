@@ -15,7 +15,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:18px;ma
 .panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
 .keyboard{padding:17px;position:sticky;top:15px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.panel-title h2,.preview-head h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
 .keygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.key{min-height:42px;border:1px solid #dfe5ee;border-radius:8px;background:#fbfcff;color:#182339;padding:5px 3px;font-size:17px;line-height:1.15}.key:hover{border-color:#91aaf9;background:var(--blue-soft);color:#1f47c4}.key small{display:block;color:#76839a;font-size:9px;line-height:1.05;margin-top:3px;font-family:system-ui,sans-serif}.key.utility{font-size:12px;font-weight:650}.key.space{grid-column:span 3;font-size:12px}.key.back{grid-column:span 2}.keyboard-footer{display:flex;gap:6px;margin-top:10px}.keyboard-footer .key{flex:1}
-.si-workflow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.si-slot textarea{min-height:235px;font-size:20px}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
+.si-workflow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:8px}.si-slot{min-width:0;display:flex;flex-direction:column;gap:7px}.si-slot label{font-weight:700;font-size:14px}.slot-head{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:26px}.slot-head .fontpick{font-size:11px}.slot-head .fontpick select{max-width:155px;padding:6px 25px 6px 7px}.si-slot textarea{min-height:235px;font-size:20px}.si-slot small{color:var(--muted);font-size:11px;line-height:1.35;min-height:30px}.si-slot #fm-si{font-family:"FM Bindumathi",monospace;font-size:20px}.copy-fm{align-self:flex-start;font-size:12px;padding:7px 10px}@media(max-width:1000px){.si-workflow{grid-template-columns:1fr}.si-slot textarea{min-height:150px}.si-slot small{min-height:0}}.content{min-width:0}.editor{padding:18px}.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:15px}.tab{border:1px solid transparent;border-radius:9px;background:transparent;padding:8px 13px;font-weight:700;color:#59667c}.tab[aria-selected="true"]{color:#2149cb;background:var(--blue-soft);border-color:#d9e2ff}.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a8b2c2;margin-right:7px;vertical-align:1px}.tab[aria-selected="true"] .dot{background:var(--blue)}
 .langbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px}.langbar label{font-weight:700;font-size:14px}.fontpick{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.fontpick select{max-width:220px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 29px 7px 9px}
 textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 18px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#172033;font-size:23px;line-height:1.75;outline:none}textarea:focus{border-color:#819afa;box-shadow:0 0 0 3px #315ee81a}.editor-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.preview{margin-top:16px;padding:17px 19px;min-height:135px}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}.preview-text{white-space:pre-wrap;overflow-wrap:anywhere;min-height:40px;color:#29364d}.preview-part{display:block;margin:0 0 10px}.preview-part:last-child{margin-bottom:0}.status{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);padding:10px 15px;border-radius:9px;background:#162341;color:white;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow);z-index:10}.status.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
 @media(max-width:850px){.shell{padding:18px 14px 30px}.workspace{grid-template-columns:1fr}.keyboard{position:static;order:2}.content{order:1}header{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}}
@@ -45,24 +45,22 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
         <button class="tab" role="tab" id="tab-ta" aria-selected="false" aria-controls="editor-ta" data-lang="ta"><span class="dot"></span>தமிழ்</button>
         <button class="tab" role="tab" id="tab-en" aria-selected="false" aria-controls="editor-en" data-lang="en"><span class="dot"></span>English</button>
       </div>
-      <div class="langbar"><label id="editorLabel" for="editor-si">Sinhala text</label><div class="fontpick"><span>Font</span><select id="font-si" aria-label="Sinhala font"></select></div></div>
+      <div class="langbar"><label id="editorLabel" for="editor-si">සිංහල පාඨය</label></div>
       <div class="si-workflow" id="sinhala-workflow" aria-label="Sinhala typing, Unicode, and FM output">
         <div class="si-slot"><label for="singlish-si">ටයිප් කරන ස්ථානය</label><textarea id="singlish-si" lang="si" spellcheck="false" placeholder="සිංහල මෙහි ටයිප් කරන්න…"></textarea><small>සිංග්ලිෂ් හෝ සිංහල ටයිප් කරන්න</small></div>
-        <div class="si-slot"><label for="editor-si">යුනිකෝඩ් සිංහල</label><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය FM වෙත පරිවර්තනය වේ</small></div>
-        <div class="si-slot"><label for="fm-si">FM Bindumathi</label><textarea id="fm-si" lang="si" spellcheck="false" readonly aria-label="FM Bindumathi converted text"></textarea><button class="btn copy-fm" id="copyFm">FM පාඨය පිටපත් කරන්න</button></div>
+        <div class="si-slot"><div class="slot-head"><label for="editor-si">යුනිකෝඩ් සිංහල</label><div class="fontpick"><span>යුනිකෝඩ් අකුරු</span><select id="font-si" aria-label="Sinhala Unicode font"></select></div></div><textarea id="editor-si" role="tabpanel" aria-labelledby="tab-si" lang="si" spellcheck="false" placeholder="යුනිකෝඩ් සිංහල මෙහි ටයිප් කරන්න හෝ අලවන්න…"></textarea><small>මෙහි ටයිප් කළ හෝ ඇලවූ පාඨය තෝරාගත් FM අකුරු රටාවට පරිවර්තනය වේ</small></div>
+        <div class="si-slot"><div class="slot-head"><label for="fm-si">FM අකුරු</label><div class="fontpick"><span>FM font</span><select id="legacy-font-si" aria-label="Sinhala FM font"><option>FM Bindumathi</option><option>FM Malithi</option><option>FM Abhaya</option><option>FM Derana</option><option>FM Gemunu</option></select></div></div><textarea id="fm-si" lang="si" spellcheck="false" readonly aria-label="Sinhala FM converted text"></textarea><button class="btn copy-fm" id="copyFm">FM පාඨය පිටපත් කරන්න</button></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="ta" aria-label="தமிழ் தட்டச்சு பகுதி">
         <div class="si-slot"><label for="editor-ta">தமிழ் தட்டச்சு</label><textarea id="editor-ta" role="tabpanel" aria-labelledby="tab-ta" lang="ta" spellcheck="false" placeholder="இங்கே தமிழில் தட்டச்சு செய்யவும்…"></textarea><small>மொழியை மாற்றினாலும் உங்கள் ஆவணம் தொடரும்</small></div>
-        <div class="si-slot"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
-        <div class="si-slot"><label for="render-ta">தமிழ் எழுத்துரு முன்னோட்டம்</label><textarea id="render-ta" lang="ta" readonly aria-label="தமிழ் எழுத்துரு முன்னோட்டம்"></textarea><small>தேர்ந்தெடுத்த தமிழ் எழுத்துருவில் முன்னோட்டம்</small></div>
+        <div class="si-slot"><div class="slot-head"><label for="unicode-ta">யுனிகோடு ஆவணம்</label><div class="fontpick"><span>யுனிகோடு எழுத்துரு</span><select id="font-ta" aria-label="Tamil Unicode font"></select></div></div><textarea id="unicode-ta" lang="ta" readonly aria-label="யுனிகோடு ஆவணம்"></textarea><small>அனைத்து மொழிகளும் ஒரே தொடர்ச்சியான உரையாக இருக்கும்</small></div>
+        <div class="si-slot"><div class="slot-head"><label for="legacy-ta">தமிழ் மரபு எழுத்துரு</label><div class="fontpick"><span>தமிழ் எழுத்துரு</span><select id="legacy-font-ta" aria-label="Tamil legacy font"><option>BAMINI-Tamil01</option><option>BAMINI-Tamil02</option><option>BAMINI-Tamil03</option><option>BAMINI-Tamil04</option><option>BAMINI-Tamil05</option></select></div></div><textarea id="legacy-ta" lang="ta" readonly aria-label="Converted Tamil legacy font text"></textarea><small>கணினியில் Bamini எழுத்துரு நிறுவப்பட்டிருக்க வேண்டும்; Word-ல் தேர்ந்தெடுத்த எழுத்துருவைப் பயன்படுத்தவும்</small></div>
       </div>
       <div class="si-workflow other-workflow hidden" data-workflow="en" aria-label="English typing area">
         <div class="si-slot"><label for="editor-en">English typing</label><textarea id="editor-en" role="tabpanel" aria-labelledby="tab-en" lang="en" spellcheck="true" placeholder="Type English here…"></textarea><small>Your document continues when you change languages.</small></div>
-        <div class="si-slot"><label for="unicode-en">Unicode document</label><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
+        <div class="si-slot"><div class="slot-head"><label for="unicode-en">Unicode document</label><div class="fontpick"><span>Unicode font</span><select id="font-en" aria-label="English Unicode font"></select></div></div><textarea id="unicode-en" lang="en" readonly aria-label="Unicode document"></textarea><small>All languages stay together as one continuous text.</small></div>
         <div class="si-slot"><label for="render-en">English font preview</label><textarea id="render-en" lang="en" readonly aria-label="English font preview"></textarea><small>Preview in the selected English font.</small></div>
       </div>
-      <div class="langbar hidden" id="fontbar-ta"><label for="font-ta">Tamil text</label><div class="fontpick"><span>Font</span><select id="font-ta" aria-label="Tamil font"></select></div></div>
-      <div class="langbar hidden" id="fontbar-en"><label for="font-en">English text</label><div class="fontpick"><span>Font</span><select id="font-en" aria-label="English font"></select></div></div>
       <div class="editor-tools"><span id="count">0 characters</span><button class="btn" id="copyCurrent">Copy this language</button></div>
     </section>
     <section class="panel preview" aria-label="Document preview">
@@ -95,12 +93,20 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
       ["Georgia", 'Georgia, serif'], ["Verdana", 'Verdana, sans-serif'], ["Calibri", 'Calibri, sans-serif']
     ]
   };
+  // Bamini Unicode-to-legacy map adapted from ag-sanjjeev/app-tamil-fonts-unicode-converter (MIT).
+  const tamilBaminiMap = {"ஸ்ரீ":"=","ஹௌ":"n`s","ஹோ":"N`h","ஹொ":"n`h","ஹை":"i`","ஹே":"N`","ஹெ":"n`","ஹூ":"`_","ஹு":"`{","ஹீ":"`P","ஹி":"`p","ஹா":"`h","ஹ்":"`;","ஹ":"`","ஸௌ":"n]s","ஸோ":"N]h","ஸொ":"n]h","ஸை":"i]","ஸே":"N]","ஸெ":"n]","ஸூ":"]_","ஸு":"]{","ஸீ":"]P","ஸி":"]p","ஸா":"]h","ஸ்":"];","ஸ":"]","ஜௌ":"n[s","ஜோ":"N[h","ஜொ":"n[h","ஜை":"i[","ஜே":"N[","ஜெ":"n[","ஜூ":"[_","ஜு":"[{","ஜீ":"[P","ஜி":"[p","ஜா":"[h","ஜ்":"[;","ஜ":"[","ஷௌ":"n\\s","ஷோ":"N\\h","ஷொ":"n\\h","ஷை":"i\\","ஷே":"N\\","ஷெ":"n\\","ஷு":"\\{","ஷூ":"\\_","ஷீ":"\\P","ஷி":"\\p","ஷா":"\\h","ஷ்":"\\;","ஷ":"\\","னௌ":"nds","னோ":"Ndh","னொ":"ndh","னை":"id","னே":"Nd","னெ":"nd","னூ":"D}","னு":"D","னீ":"dP","னி":"dp","னா":"dh","ன்":"d;","ன":"d","றௌ":"nws","றோ":"Nwh","றொ":"nwh","றை":"iw","றே":"Nw","றெ":"nw","றூ":"W}","று":"W","றீ":"wP","றி":"wp","றா":"wh","ற்":"w;","ற":"w","ளௌ":"nss","ளோ":"Nsh","ளொ":"nsh","ளை":"is","ளே":"Ns","ளெ":"ns","ளூ":"Sh","ளு":"S","ளீ":"sP","ளி":"sp","ளா":"sh","ள்":"s;","ள":"s","ழௌ":"nos","ழோ":"Noh","ழொ":"noh","ழை":"io","ழே":"No","ழெ":"no","ழூ":"*","ழு":"O","ழீ":"oP","ழி":"op","ழா":"oh","ழ்":"o;","ழ":"o","வௌ":"nts","வோ":"Nth","வொ":"nth","வை":"it","வே":"Nt","வெ":"nt","வூ":"T+","வு":"T","வீ":"tP","வி":"tp","வா":"th","வ்":"t;","வ":"t","லௌ":"nys","லோ":"Nyh","லொ":"nyh","லை":"iy","லே":"Ny","லெ":"ny","லூ":"Y}","லு":"Y","லீ":"yP","லி":"yp","லா":"yh","ல்":"y;","ல":"y","ரௌ":"nus","ரோ":"Nuh","ரொ":"nuh","ரை":"iu","ரே":"Nu","ரெ":"nu","ரூ":"&","ரு":"U","ரீ":"uP","ரி":"up","ரா":"uh","ர்":["u;","H","h;"],"ர":"u","யௌ":"nas","யோ":"Nah","யொ":"nah","யை":"ia","யே":"Na","யெ":"na","யூ":"A+","யு":"A","யீ":"aP","யி":"ap","யா":"ah","ய்":"a;","ய":"a","மௌ":"nks","மோ":"Nkh","மொ":"nkh","மை":"ik","மே":"Nk","மெ":"nk","மூ":"%","மு":"K","மீ":"kP","மி":"kp","மா":"kh","ம்":"k;","ம":"k","பௌ":"ngs","போ":"Ngh","பொ":"ngh","பை":"ig","பே":"Ng","பெ":"ng","பூ":"G+","பு":"G","பீ":"gP","பி":"gp","பா":"gh","ப்":"g;","ப":"g","நௌ":"nes","நோ":"Neh","நொ":"neh","நை":"ie","நே":"Ne","நெ":"ne","நூ":"E}","நு":"E","நீ":"eP","நி":"ep","நா":"eh","ந்":"e;","ந":"e","தௌ":"njs","தோ":"Njh","தொ":"njh","தை":"ij","தே":"Nj","தெ":"nj","தூ":"J}","து":"J","தீ":"jP","தி":"jp","தா":"jh","த்":"j;","த":"j","ணௌ":"nzs","ணோ":"Nzh","ணொ":"nzh","ணை":"iz","ணே":"Nz","ணெ":"nz","ணூ":"Z}","ணு":"Z","ணீ":"zP","ணி":"zp","ணா":"zh","ண்":"z;","ண":"z","டௌ":"nls","டோ":"Nlh","டொ":"nlh","டை":"il","டே":"Nl","டெ":"nl","டூ":"^","டு":"L","டீ":"B","டி":"b","டா":"lh","ட்":"l;","ட":"l","ஞௌ":"nQs","ஞோ":"NQh","ஞொ":"nQh","ஞை":"iQ","ஞே":"NQ","ஞெ":"nQ","ஞூ":"*","ஞு":"*","ஞீ":"QP","ஞி":"Qp","ஞா":"Qh","ஞ்":"Q;","ஞ":"Q","சௌ":"nrs","சோ":"Nrh","சொ":"nrh","சை":"ir","சே":"Nr","செ":"nr","சூ":"R+","சு":"R","சீ":"rP","சி":"rp","சா":"rh","ச்":"r;","ச":"r","ஙௌ":"nqs","ஙோ":"Nqh","ஙொ":"nqh","ஙை":"iq","ஙே":"Nq","ஙெ":"nq","ஙூ":"*","ஙு":"*","ஙீ":"qP","ஙி":"qp","ஙா":"qh","ங்":"q;","ங":"q","கௌ":"nfs","கோ":"Nfh","கொ":"nfh","கை":"if","கே":"Nf","கெ":"nf","கூ":"$","கு":"F","கீ":"fP","கி":"fp","கா":"fh","க்":"f;","க":"f","ஔ":"xs","ஓ":"X","ஒ":"x","ஐ":"I","ஏ":"V","எ":"v","ஊ":"C","உ":"c","ஈ":"<","இ":",","ஆ":"M","அ":"m"};
+  const legacyFonts = {
+    si:["FM Bindumathi","FM Malithi","FM Abhaya","FM Derana","FM Gemunu"],
+    ta:["BAMINI-Tamil01","BAMINI-Tamil02","BAMINI-Tamil03","BAMINI-Tamil04","BAMINI-Tamil05"]
+  };
+  const legacyFontSelects = {si:document.querySelector("#legacy-font-si"),ta:document.querySelector("#legacy-font-ta")};
   const language = {si:{name:"සිංහල",label:"සිංහල පාඨය",tag:"si"},ta:{name:"தமிழ்",label:"தமிழ் உரை",tag:"ta"},en:{name:"English",label:"English text",tag:"en"}};
   const values = {si:"",ta:"",en:""};
   let documentText = "";
   let savedCursor = 0;
   let sourceDocStart = null;
   let previousSinhalaText = "";
+  let sourceInputOffset = 0;
   let active = "si";
   const editors = {si:document.querySelector("#editor-si"),ta:document.querySelector("#editor-ta"),en:document.querySelector("#editor-en")};
   const fontSelects = {si:document.querySelector("#font-si"),ta:document.querySelector("#font-ta"),en:document.querySelector("#font-en")};
@@ -110,13 +116,16 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function notify(message){const el=document.querySelector("#status");el.textContent=message;el.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.classList.remove("show"),2100)}
   for(const lang of labels){
     fonts[lang].forEach(([name,stack],i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;fontSelects[lang].append(o)});
-    fontSelects[lang].addEventListener("change",()=>{editors[lang].style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();renderPreview()});
-    editors[lang].style.fontFamily=fonts[lang][0][1];
+    const savedFont=localStorage.getItem("triscript-unicode-font-"+lang);
+    if(savedFont!==null&&fonts[lang][Number(savedFont)])fontSelects[lang].value=savedFont;
+    const fontTarget=lang==="si"?editors.si:document.querySelector("#unicode-"+lang);
+    fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
+    fontSelects[lang].addEventListener("change",()=>{localStorage.setItem("triscript-unicode-font-"+lang,fontSelects[lang].value);fontTarget.style.fontFamily=fonts[lang][fontSelects[lang].value][1];syncMirrors();syncFmOutput();renderPreview()});
     editors[lang].addEventListener("input",()=>{
       documentText=editors[lang].value;
       savedCursor=editors[lang].selectionStart??documentText.length;
       labels.forEach(key=>{values[key]=documentText;if(key!==lang)editors[key].value=documentText});
-      if(lang==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
+      if(lang==="si"){sourceDocStart=null;previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
       syncMirrors();syncFmOutput();renderPreview();if(active===lang)updateCount()
     });
   }
@@ -150,23 +159,23 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
     const el=editors[active],start=el.selectionStart??el.value.length,end=el.selectionEnd??start;
     el.setRangeText(text,start,end,"end");documentText=el.value;savedCursor=el.selectionStart??documentText.length;
     labels.forEach(key=>{values[key]=documentText;if(key!==active)editors[key].value=documentText});
-    if(active==="si"){sourceDocStart=null;previousSinhalaText="";singlishInput.value=""}
+    if(active==="si"){sourceDocStart=null;previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
     syncMirrors();syncFmOutput();el.focus();renderPreview();updateCount();
   }
   document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
     const next=tab.dataset.lang;
     savedCursor=editors[active].selectionStart??savedCursor;
-    if(active==="si"&&next!=="si"){singlishInput.value="";sourceDocStart=null;previousSinhalaText=""}
+    if(active==="si"&&next!=="si"){sourceDocStart=null;previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
     active=next;editors[active].value=documentText;
+    if(active==="si"){sourceDocStart=Math.min(savedCursor,documentText.length);previousSinhalaText="";sourceInputOffset=singlishInput.value.length}
     document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",String(x===tab)));
     document.querySelector("#sinhala-workflow").classList.toggle("hidden",active!=="si");
     document.querySelectorAll(".other-workflow").forEach(w=>w.classList.toggle("hidden",w.dataset.workflow!==active));
     document.querySelector("#editorLabel").textContent=language[active].label;
     document.querySelector("#editorLabel").setAttribute("for","editor-"+active);
-    document.querySelector("#fontbar-ta").classList.toggle("hidden",active!=="ta");
-    document.querySelector("#fontbar-en").classList.toggle("hidden",active!=="en");
-    document.querySelector("#font-si").closest(".langbar").classList.toggle("hidden",active!=="si");
-    syncMirrors();buildKeyboard();updateCount();editors[active].focus();editors[active].setSelectionRange(savedCursor,savedCursor);
+    syncMirrors();syncFmOutput();buildKeyboard();updateCount();
+    if(active==="si"){singlishInput.focus();singlishInput.setSelectionRange(singlishInput.value.length,singlishInput.value.length)}
+    else{editors[active].focus();editors[active].setSelectionRange(savedCursor,savedCursor)}
   }));
   document.querySelectorAll("[data-insert]").forEach(b=>b.addEventListener("click",()=>insertAtCursor(b.dataset.insert)));
   document.querySelectorAll("[data-action=backspace]").forEach(b=>b.addEventListener("click",()=>{
@@ -180,7 +189,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   document.querySelector("#clearCurrent").addEventListener("click",()=>{documentText="";savedCursor=0;labels.forEach(key=>{values[key]="";editors[key].value=""});singlishInput.value="";sourceDocStart=null;previousSinhalaText="";syncMirrors();syncFmOutput();renderPreview();updateCount();editors[active].focus()});
   singlishInput.addEventListener("input",()=>{
     if(sourceDocStart===null)sourceDocStart=Math.min(savedCursor,documentText.length);
-    const replacement=transliterateSinhlish(singlishInput.value);
+    const replacement=transliterateSinhlish(singlishInput.value.slice(sourceInputOffset));
     documentText=documentText.slice(0,sourceDocStart)+replacement+documentText.slice(sourceDocStart+previousSinhalaText.length);
     previousSinhalaText=replacement;savedCursor=sourceDocStart+replacement.length;
     labels.forEach(key=>{values[key]=documentText;editors[key].value=documentText});
@@ -189,12 +198,28 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   document.querySelector("#copyFm").addEventListener("click",()=>copy(fmOutput.value));
   function syncMirrors(){
     for(const lang of ["ta","en"]){
-      const unicode=document.querySelector("#unicode-"+lang),rendered=document.querySelector("#render-"+lang);
-      unicode.value=documentText;rendered.value=documentText;
-      rendered.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
+      const unicode=document.querySelector("#unicode-"+lang),rendered=document.querySelector(lang==="ta"?"#legacy-ta":"#render-en");
+      unicode.value=documentText;unicode.style.fontFamily=fonts[lang][fontSelects[lang].value][1];
+      rendered.value=lang==="ta"?unicodeToTamilBamini(documentText):documentText;
+      rendered.style.fontFamily=lang==="ta"?'"'+legacyFontSelects.ta.value+'", monospace':fonts.en[fontSelects.en.value][1];
     }
   }
-  function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(documentText);}
+  function syncFmOutput(){fmOutput.value=unicodeToFmBindumathi(documentText);fmOutput.style.fontFamily='"'+legacyFontSelects.si.value+'", monospace'}
+  function unicodeToTamilBamini(input){
+    let text=input.normalize("NFC");
+    for(const [unicode,codes] of Object.entries(tamilBaminiMap)){
+      text=text.split(unicode).join(Array.isArray(codes)?codes[0]:codes);
+    }
+    return text;
+  }
+  for(const lang of ["si","ta"]){
+    const saved=localStorage.getItem("triscript-legacy-font-"+lang);
+    if(saved&&legacyFonts[lang].includes(saved))legacyFontSelects[lang].value=saved;
+    legacyFontSelects[lang].addEventListener("change",()=>{
+      localStorage.setItem("triscript-legacy-font-"+lang,legacyFontSelects[lang].value);
+      syncMirrors();syncFmOutput();
+    });
+  }
   function updateCount(){const n=editors[active].value.length;document.querySelector("#count").textContent=n+" character"+(n===1?"":"s")}
   function transliterateSinhlish(input){
     if(/[\u0D80-\u0DFF]/.test(input)) return input;
@@ -239,13 +264,13 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   document.querySelector("#saveTxt").addEventListener("click",()=>download("triscript-document.txt","text/plain;charset=utf-8",fullText()));
   document.querySelector("#saveDoc").addEventListener("click",()=>{
     const spans=textRuns(documentText).map(run=>'<span lang="'+language[run.lang].tag+'" style="font-family:'+escapeHtml(fonts[run.lang][fontSelects[run.lang].value][1])+'">'+escapeHtml(run.text)+'</span>').join("");
-    const body='<p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(fmOutput.value?'<p lang="si" style="font-family:FM Bindumathi,serif;white-space:pre-wrap;line-height:1.7">'+escapeHtml(fmOutput.value)+'</p>':"");
+    const body='<p style="white-space:pre-wrap;line-height:1.7">'+spans+'</p>'+(fmOutput.value?'<p lang="si" style="font-family:'+escapeHtml(legacyFontSelects.si.value)+',serif;white-space:pre-wrap;line-height:1.7">'+escapeHtml(fmOutput.value)+'</p>':"")+(documentText?'<p lang="ta" style="font-family:'+escapeHtml(legacyFontSelects.ta.value)+',serif;white-space:pre-wrap;line-height:1.7">'+escapeHtml(unicodeToTamilBamini(documentText))+'</p>':"");
     const doc='<!doctype html><html><head><meta charset="utf-8"><title>TriScript document</title></head><body>'+body+"</body></html>";
     download("triscript-document.doc",'application/msword;charset=utf-8',doc);
   });
   function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
   document.querySelector("#savePdf").addEventListener("click",()=>{if(!fullText()){notify("Type some text before exporting.");return}window.print()});
-  syncMirrors();buildKeyboard();renderPreview();updateCount();
+  syncMirrors();syncFmOutput();buildKeyboard();renderPreview();updateCount();
 })();
 </script>
 </body>
