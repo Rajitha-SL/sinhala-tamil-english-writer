@@ -176,6 +176,7 @@ textarea{display:block;width:100%;min-height:230px;resize:vertical;padding:16px 
   function renderPreview(){
     const preview=document.querySelector("#preview");preview.replaceChildren();
     labels.forEach(lang=>{if(!values[lang])return;const span=document.createElement("span");span.className="preview-part";span.lang=language[lang].tag;span.style.fontFamily=fonts[lang][fontSelects[lang].value][1];span.textContent=values[lang];preview.append(span)});
+    if(fmOutput.value){const span=document.createElement("span");span.className="preview-part";span.lang="si";span.style.fontFamily='"FM Bindumathi",serif';span.textContent=fmOutput.value;preview.append(span)}
   }
   function fullText(){return labels.filter(x=>values[x]).map(x=>values[x]).join("\n\n")}
   async function copy(text){if(!text){notify("There is no text to copy yet.");return}try{await navigator.clipboard.writeText(text);notify("Copied to clipboard.")}catch(e){const box=document.createElement("textarea");box.value=text;document.body.append(box);box.select();document.execCommand("copy");box.remove();notify("Copied to clipboard.")}}
